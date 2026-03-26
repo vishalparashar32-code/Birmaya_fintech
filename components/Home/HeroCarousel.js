@@ -1,0 +1,125 @@
+"use client";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import useTypewriter from "./useTypewriter";
+import Link from "next/link";
+const phoneNumber = "919217924215"; // yaha apna number daalna (91 without +)
+const repaymentMessage =
+  "Hi, I want my detailed Loan Repayment Schedule. Please guide me for Rs.99 service.";
+
+const slides = [
+  {
+    desktop: "/hero/hero1.png",
+    mobile: "/hero/mobile/hero1-mobile.png",
+    title: "Instant Loan Approval in 24 Hours",
+    desc: "Minimal paperwork. Quick verification. Fast disbursal.",
+    btn: "Apply Now",
+    href: "/apply-loan"
+  },
+  {
+    desktop: "/hero/hero2.png",
+    mobile: "/hero/mobile/hero2-mobile.png",
+    title: "Check Your Credit Score for Free",
+    desc: "Get your instant CIBIL score report with no cost and no hidden charges.",
+    btn: "Check Now",
+    href: "/check-free-credit-score"
+  },
+  {
+    desktop: "/hero/hero5.png",
+    mobile: "/hero/mobile/hero5-mobile.png",
+    title: "Get Your Re-Payment Schedule",
+    desc: "Complete EMI breakdown & total interest insights. Only Rs.99 - One Time.",
+    btn: "Chat on WhatsApp",
+    href: `https://wa.me/${phoneNumber}?text=${encodeURIComponent(repaymentMessage)}`
+  },
+];
+
+
+export default function HeroCarousel() {
+  const [current, setCurrent] = useState(0);
+  const typedTitle = useTypewriter(slides[current].title, 40);
+  const typedDesc = useTypewriter(slides[current].desc, 20);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth < 768);
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
+
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute w-full h-full transition-opacity duration-700 ${index === current ? "opacity-100" : "opacity-0"
+            }`}
+        >
+          <Image src={isMobile ? slide.mobile : slide.desktop} alt="hero" fill className="object-cover" />
+
+          <div className="absolute inset-0 bg-black/60 pointer-events-none"></div>
+
+          {/* LEFT SIDE TEXT */}
+          {index === current && (
+            <div className="absolute inset-0 flex items-center z-51">
+              <div className="max-w-7xl lg:ml-20 px-6 text-white">
+                <div className="max-w-xl">
+
+                  <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    {typedTitle}
+                    <span className="animate-pulse">|</span>
+                  </h1>
+
+                  <p className="text-lg md:text-xl mb-8">
+                    {typedDesc}
+                  </p>
+                  {slide.btn && (
+                    slide.href.startsWith("http") ? (
+                      <a
+                        href={slide.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-accent px-8 py-3 rounded-lg font-semibold text-white hover:scale-105 transition"
+                      >
+                        {slide.btn}
+                      </a>
+                    ) : (
+                      <Link
+                        href={slide.href}
+                        className="bg-accent px-8 py-3 rounded-lg font-semibold text-white hover:scale-105 transition"
+                      >
+                        {slide.btn}
+                      </Link>
+                    )
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+
+      {/* dots */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
+        {slides.map((_, index) => (
+          <div
+            key={index}
+            onClick={() => setCurrent(index)}
+            className={`w-3 h-3 rounded-full cursor-pointer ${current === index ? "bg-white" : "bg-white/40"
+              }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
