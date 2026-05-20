@@ -50,7 +50,7 @@ export default function Awards() {
         {/* HEADING */}
         <div className="text-center mb-14">
 
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+          <h2 className="text-4xl md:text-4xl font-bold leading-tight">
             <span className="text-[#272361]">
               Awards &
             </span>

@@ -64,10 +64,18 @@ export default function Partners() {
 
         {/* HEADING */}
         <div className="text-center mb-14">
-          <h2 className="text-4xl md:text-3xl font-bold text-black leading-tight">
-            Trusted Banking &
-            <span className="text-[#f89328]"> NBFC Partners</span>
+
+          <h2 className="text-4xl md:text-4xl font-bold leading-tight">
+            <span className="text-[#272361]">
+              Trusted Banking  &
+            </span>
+
+            <span className="text-[#f28c28]">
+                NBFC Partners
+            </span>
           </h2>
+
+
 
           <div className="w-28 h-1 bg-[#f89328] mx-auto mt-6 rounded-full"></div>
 

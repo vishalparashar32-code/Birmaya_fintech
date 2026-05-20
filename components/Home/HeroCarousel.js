@@ -89,33 +89,53 @@ export default function HeroCarousel() {
             alt="hero"
             fill
             priority
-            className="object-cover"
+            className="object-cover object-center"
           />
 
-          {/* OVERLAY */}
-          <div className="absolute inset-0 bg-black/55"></div>
+          {/* DARK OVERLAY */}
+          <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-black/85 via-black/55 to-black/20"></div>
 
           {/* CONTENT */}
           {index === current && (
-            <div className="absolute inset-0 z-20 flex items-center">
+            <div className="absolute inset-0 z-20 flex items-center justify-center md:justify-start">
 
               <div className="max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-10">
 
-                <div className="max-w-2xl text-white">
+                {/* CONTENT BOX */}
+                <div className="
+                  max-w-2xl
+                  text-white
+                  text-center
+                  md:text-left
+                  mx-auto
+                  md:mx-0
+                  pt-14
+                  md:pt-0
+                ">
 
                   {/* TOP TAG */}
-                  <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-5">
+                  <div className="inline-flex items-center gap-2 bg-[#272361]/70 border border-white/10 px-4 py-2 rounded-full mb-6 shadow-lg backdrop-blur-md">
 
                     <div className="w-2 h-2 bg-[#f89328] rounded-full animate-pulse"></div>
 
-                    <p className="text-sm font-medium tracking-wide">
+                    <p className="text-xs sm:text-sm font-medium tracking-wide">
                       Trusted Financial Solutions
                     </p>
 
                   </div>
 
                   {/* TITLE */}
-                  <h1 className="text-[28px] sm:text-[38px] md:text-[10px] lg:text-[40px] font-bold leading-[1.1] mb-5 tracking-tight max-w-[700px]">
+                  <h1 className="
+                    text-[30px]
+                    sm:text-[42px]
+                    md:text-[58px]
+                    lg:text-[65px]
+                    font-extrabold
+                    leading-[1.1]
+                    mb-5
+                    tracking-tight
+                    drop-shadow-2xl
+                  ">
 
                     {typedTitle}
 
@@ -126,14 +146,24 @@ export default function HeroCarousel() {
                   </h1>
 
                   {/* DESCRIPTION */}
-                  <p className="text-base md:text-lg text-white/85 leading-7 max-w-xl mb-8 font-normal">
+                  <p className="
+                    text-sm
+                    sm:text-base
+                    md:text-lg
+                    text-white/85
+                    leading-7
+                    max-w-xl
+                    mb-8
+                    mx-auto
+                    md:mx-0
+                  ">
 
                     {typedDesc}
 
                   </p>
 
                   {/* BUTTONS */}
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
 
                     {/* MAIN BUTTON */}
                     {slide.href.startsWith("http") ? (
@@ -141,7 +171,7 @@ export default function HeroCarousel() {
                         href={slide.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center justify-center gap-3 bg-[#f89328] hover:bg-[#e67e12] px-7 py-3.5 rounded-xl text-white font-semibold text-base transition-all duration-300 hover:scale-105"
+                        className="group inline-flex items-center justify-center gap-3 bg-[#f89328] hover:bg-[#ff9d2f] px-8 py-4 rounded-2xl text-white font-semibold text-base transition-all duration-300 hover:scale-105 shadow-[0_10px_30px_rgba(248,147,40,0.35)]"
                       >
                         {slide.btn}
 
@@ -155,7 +185,7 @@ export default function HeroCarousel() {
                     ) : (
                       <Link
                         href={slide.href}
-                        className="group inline-flex items-center justify-center gap-3 bg-[#f89328] hover:bg-[#e67e12] px-7 py-3.5 rounded-xl text-white font-semibold text-base transition-all duration-300 hover:scale-105"
+                        className="group inline-flex items-center justify-center gap-3 bg-[#f89328] hover:bg-[#ff9d2f] px-8 py-4 rounded-2xl text-white font-semibold text-base transition-all duration-300 hover:scale-105 shadow-[0_10px_30px_rgba(248,147,40,0.35)]"
                       >
                         {slide.btn}
 
@@ -164,10 +194,10 @@ export default function HeroCarousel() {
                       </Link>
                     )}
 
-                    {/* SECOND BUTTON */}
+                    {/* CONTACT BUTTON */}
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center border border-white/30 bg-white/10 backdrop-blur-md hover:bg-white hover:text-black px-7 py-3.5 rounded-xl text-white font-semibold text-base transition-all duration-300"
+                      className="inline-flex items-center justify-center border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white hover:text-[#272361] px-8 py-4 rounded-2xl text-white font-semibold text-base transition-all duration-300"
                     >
                       Contact Us
                     </Link>
@@ -175,31 +205,34 @@ export default function HeroCarousel() {
                   </div>
 
                   {/* STATS */}
-                  <div className="flex flex-wrap gap-7 mt-12">
+                  <div className="flex flex-wrap justify-center md:justify-start gap-8 mt-12">
 
                     <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-[#f89328]">
+                      <h3 className="text-3xl md:text-4xl font-extrabold text-[#f89328]">
                         5000+
                       </h3>
-                      <p className="text-white/70 text-sm mt-1">
+
+                      <p className="text-white/70 text-sm mt-2">
                         Happy Customers
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-[#f89328]">
+                      <h3 className="text-3xl md:text-4xl font-extrabold text-[#f89328]">
                         24Hr
                       </h3>
-                      <p className="text-white/70 text-sm mt-1">
+
+                      <p className="text-white/70 text-sm mt-2">
                         Fast Approval
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-[#f89328]">
+                      <h3 className="text-3xl md:text-4xl font-extrabold text-[#f89328]">
                         35+
                       </h3>
-                      <p className="text-white/70 text-sm mt-1">
+
+                      <p className="text-white/70 text-sm mt-2">
                         Banking Partners
                       </p>
                     </div>

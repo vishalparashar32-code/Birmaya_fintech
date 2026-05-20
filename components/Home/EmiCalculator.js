@@ -72,15 +72,20 @@ export default function EmiCalculator() {
         {/* HEADING */}
         <div className="text-center mb-14">
 
-          <p className="text-[#f89328] font-semibold uppercase tracking-[4px] mb-3">
-            EMI Planner
-          </p>
+      <h2 className="text-4xl md:text-4xl font-bold leading-tight">
 
-          <h2 className="text-4xl md:text-3xl font-bold text-black leading-tight">
-            Calculate Your
-            <span className="text-[#f89328]"> EMI Instantly</span>
-          </h2>
+  <span className="text-[#272361]">
+    Calculate Your
+  </span>
 
+  {/* Space */}
+  <span className="mx-2"></span>
+
+  <span className="text-[#f28c28]">
+    EMI Instantly
+  </span>
+
+</h2>
           <div className="w-28 h-1 bg-[#f89328] mx-auto mt-6 rounded-full"></div>
 
           <p className="text-gray-500 mt-6 text-base md:text-lg max-w-2xl mx-auto leading-8">
