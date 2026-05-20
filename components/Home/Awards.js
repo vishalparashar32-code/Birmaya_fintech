@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
 
 const awards = [
   {
@@ -44,29 +43,6 @@ const awards = [
 ];
 
 export default function Awards() {
-  const scrollRef = useRef(null);
-
-  useEffect(() => {
-    const container = scrollRef.current;
-
-    const autoScroll = () => {
-      if (container) {
-        container.scrollLeft += 1;
-
-        if (
-          container.scrollLeft >=
-          container.scrollWidth - container.clientWidth
-        ) {
-          container.scrollLeft = 0;
-        }
-      }
-    };
-
-    const interval = setInterval(autoScroll, 20);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section className="py-10 bg-[#F7F9FC] overflow-hidden">
       <div className="max-w-7xl mx-auto px-2 md:px-6">
@@ -74,9 +50,14 @@ export default function Awards() {
         {/* HEADING */}
         <div className="text-center mb-14">
 
-          <h2 className="text-4xl md:text-3xl font-bold text-black leading-tight">
-            Awards &
-            <span className="text-[#f89328]"> Certifications</span>
+          <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+            <span className="text-[#272361]">
+              Awards &
+            </span>
+
+            <span className="text-[#f28c28]">
+              {" "}Certifications
+            </span>
           </h2>
 
           <div className="w-28 h-1 bg-[#f89328] mx-auto mt-6 rounded-full"></div>
@@ -87,50 +68,64 @@ export default function Awards() {
 
         </div>
 
-        {/* AUTO SLIDER */}
-        <div
-          ref={scrollRef}
-          className="flex gap-5 overflow-x-auto no-scrollbar scroll-smooth pb-4"
-        >
+        {/* SLIDER */}
+        <div className="overflow-hidden relative">
 
-          {[...awards, ...awards].map((award, i) => (
+          <motion.div
+            className="flex gap-5 w-max"
+            animate={{
+              x: ["0%", "-50%"],
+            }}
+            transition={{
+              duration: 35,
+              ease: "linear",
+              repeat: Infinity,
+            }}
+          >
 
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              viewport={{ once: true }}
-              className="group min-w-[260px] sm:min-w-[280px] md:min-w-[320px] bg-white border border-gray-200 hover:border-[#f89328] rounded-3xl p-5 transition-all duration-300 hover:scale-[1.04]"
-            >
+            {[...awards, ...awards].map((award, i) => (
 
-              {/* IMAGE */}
-              <div className="relative h-[240px] md:h-[280px] flex items-center justify-center overflow-hidden rounded-2xl bg-[#F7F9FC]">
+              <motion.div
+                key={i}
+                whileHover={{
+                  scale: 1.03,
+                }}
+                transition={{
+                  duration: 0.3,
+                }}
+                className="group min-w-[260px] sm:min-w-[280px] md:min-w-[320px] bg-white border border-gray-200 hover:border-[#f89328] rounded-3xl p-5 shadow-sm hover:shadow-xl transition-all duration-300"
+              >
 
-                <Image
-                  src={award.image}
-                  alt="award"
-                  width={280}
-                  height={280}
-                  className="object-contain transition-all duration-500 group-hover:scale-110"
-                />
+                {/* IMAGE */}
+                <div className="relative h-[240px] md:h-[280px] flex items-center justify-center overflow-hidden rounded-2xl bg-[#F7F9FC]">
 
-              </div>
+                  <Image
+                    src={award.image}
+                    alt="award"
+                    width={280}
+                    height={280}
+                    className="object-contain transition-transform duration-500 group-hover:scale-110"
+                  />
 
-              {/* DATE */}
-              <div className="mt-5 text-center">
+                </div>
 
-                <p className="text-[#f89328] font-semibold text-lg">
-                  Awarded in {award.date}
-                </p>
+                {/* DATE */}
+                <div className="mt-5 text-center">
 
-              </div>
+                  <p className="text-[#f89328] font-semibold text-lg">
+                    Awarded in {award.date}
+                  </p>
 
-            </motion.div>
+                </div>
 
-          ))}
+              </motion.div>
+
+            ))}
+
+          </motion.div>
 
         </div>
+
       </div>
     </section>
   );

@@ -54,15 +54,28 @@ export default function Testimonials() {
 
         {/* Heading */}
         <div className="text-center mb-14">
-          <h2 className="text-4xl md:text-3xl font-bold text-black leading-tight">
-            What Our
-            <span className="text-[#f89328]"> Customers Say</span>
+          {/* Heading */}
+          <h2 className="mt-6 text-4xl sm:text-5xl md:text-4xl font-bold leading-tight">
+
+            <span className="text-[#272361]">
+              What Our
+            </span>
+
+            <span className="text-[#f28c28]">
+              {" "}Customers Say
+            </span>
+
           </h2>
 
-          <div className="w-28 h-1 bg-[#f89328] mx-auto mt-6 rounded-full"></div>
+          {/* Underline */}
+          <div className="w-28 h-1 bg-[#f28c28] mx-auto mt-6 rounded-full"></div>
 
-          <p className="text-gray-500 mt-6 text-lg max-w-2xl mx-auto leading-8">
-            Real experiences from our happy customers
+          {/* Description */}
+          <p className="text-gray-500 mt-6 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-7 sm:leading-8">
+
+            Real experiences and valuable feedback
+            from our happy customers across India.
+
           </p>
 
         </div>
