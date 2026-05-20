@@ -58,133 +58,240 @@ export default function LoanApplicationForm() {
   };
 
   return (
-    <section className="py-24 bg-[#F4F6FA]">
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="bg-white p-10 md:p-14 rounded-xl shadow-lg">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-10 flex items-center gap-3 ">
-            Apply for Loan
-            <span className="text-accent text-4xl">{"->"}</span>
-          </h2>
+    <section className="relative py-20 bg-gradient-to-b from-[#f8f9ff] to-white overflow-hidden">
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <input
-              type="text"
-              name="website"
-              value={formData.website}
-              onChange={handleChange}
-              tabIndex={-1}
-              autoComplete="off"
-              className="hidden"
-            />
+      {/* Background Glow */}
+      <div className="absolute top-0 left-0 w-80 h-80 bg-[#272361]/10 rounded-full blur-3xl"></div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#f28c28]/10 rounded-full blur-3xl"></div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        {/* Form Card */}
+        <div className="bg-white rounded-[35px] shadow-2xl overflow-hidden grid lg:grid-cols-2">
+
+          {/* Left Side */}
+          <div className="relative bg-[#272361] p-10 md:p-14 text-white flex flex-col justify-center overflow-hidden">
+
+            {/* Glow */}
+            <div className="absolute top-0 right-0 w-60 h-60 bg-white/10 rounded-full blur-3xl"></div>
+
+            <div className="relative z-10">
+
+              <span className="inline-block bg-white/10 border border-white/20 px-5 py-2 rounded-full text-sm font-medium">
+                BIRMAYA FINTECH
+              </span>
+
+              <h2 className="mt-6 text-4xl md:text-5xl font-bold leading-tight">
+
+                Apply For
+                <span className="text-[#f28c28]">
+                  {" "}Loan
+                </span>
+
+              </h2>
+
+              {/* Underline */}
+              <div className="w-24 h-1 bg-[#f28c28] rounded-full mt-6"></div>
+
+              <p className="mt-8 text-white/80 leading-8">
+                Get quick approvals, minimum paperwork,
+                and trusted financial solutions with
+                Birmaya Fintech.
+              </p>
+
+              {/* Features */}
+              <div className="mt-10 space-y-5">
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-[#f28c28] text-xl">
+                    ✓
+                  </div>
+
+                  <span>Fast Loan Processing</span>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-[#f28c28] text-xl">
+                    ✓
+                  </div>
+
+                  <span>Minimal Documentation</span>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-[#f28c28] text-xl">
+                    ✓
+                  </div>
+
+                  <span>100% Secure Process</span>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* Right Side Form */}
+          <div className="p-8 md:p-12">
+
+            <h3 className="text-3xl font-bold text-[#272361]">
+              Loan Application Form
+            </h3>
+
+            <p className="text-gray-500 mt-3 mb-8">
+              Fill your details and our team will contact you shortly.
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+
               <input
                 type="text"
-                name="name"
-                placeholder="Full Name"
-                required
-                value={formData.name}
+                name="website"
+                value={formData.website}
                 onChange={handleChange}
-                className="input text-gray-500"
+                tabIndex={-1}
+                autoComplete="off"
+                className="hidden"
               />
-              <input
-                type="tel"
-                name="mobile"
-                placeholder="Mobile"
-                required
-                value={formData.mobile}
-                onChange={handleChange}
-                className="input"
-              />
-            </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              <input
-                type="email"
-                name="email"
-                placeholder="Email ID"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                className="input text-gray-500"
-              />
-              <input
-                type="text"
-                name="city"
-                placeholder="City"
-                required
-                value={formData.city}
-                onChange={handleChange}
-                className="input text-gray-500"
-              />
-            </div>
+              {/* Row 1 */}
+              <div className="grid md:grid-cols-2 gap-5">
 
-            <select
-              required
-              name="loanType"
-              value={formData.loanType}
-              onChange={handleChange}
-              className="input w-full text-gray-500"
-            >
-              <option value="">Select Loan Type</option>
-              <option>Personal Loan</option>
-              <option>Business Loan</option>
-              <option>Home Loan</option>
-              <option>Auto Loan</option>
-              <option>Loan Against Property</option>
-              <option>Loan Against Shares</option>
-              <option>Education Loan</option>
-            </select>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full h-14 px-5 rounded-2xl border border-gray-200 bg-[#fafafa] text-gray-700 focus:border-[#272361] focus:ring-4 focus:ring-[#272361]/10 outline-none transition"
+                />
 
-            <div className="grid md:grid-cols-2 gap-6">
-              <input
-                type="number"
-                name="loanAmount"
-                placeholder="Loan Amount Required"
+                <input
+                  type="tel"
+                  name="mobile"
+                  placeholder="Mobile Number"
+                  required
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  className="w-full h-14 px-5 rounded-2xl border border-gray-200 bg-[#fafafa] text-gray-700 focus:border-[#272361] focus:ring-4 focus:ring-[#272361]/10 outline-none transition"
+                />
+
+              </div>
+
+              {/* Row 2 */}
+              <div className="grid md:grid-cols-2 gap-5">
+
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full h-14 px-5 rounded-2xl border border-gray-200 bg-[#fafafa] text-gray-700 focus:border-[#272361] focus:ring-4 focus:ring-[#272361]/10 outline-none transition"
+                />
+
+                <input
+                  type="text"
+                  name="city"
+                  placeholder="City"
+                  required
+                  value={formData.city}
+                  onChange={handleChange}
+                  className="w-full h-14 px-5 rounded-2xl border border-gray-200 bg-[#fafafa] text-gray-700 focus:border-[#272361] focus:ring-4 focus:ring-[#272361]/10 outline-none transition"
+                />
+
+              </div>
+
+              {/* Loan Type */}
+              <select
                 required
-                min="1"
-                value={formData.loanAmount}
+                name="loanType"
+                value={formData.loanType}
                 onChange={handleChange}
-                className="input text-gray-500"
-              />
-              <input
-                type="number"
-                name="monthlyIncome"
-                placeholder="Monthly Income"
-                required
-                min="1"
-                value={formData.monthlyIncome}
+                className="w-full h-14 px-5 rounded-2xl border border-gray-200 bg-[#fafafa] text-gray-700 focus:border-[#272361] focus:ring-4 focus:ring-[#272361]/10 outline-none transition"
+              >
+                <option value="">Select Loan Type</option>
+                <option>Personal Loan</option>
+                <option>Business Loan</option>
+                <option>Home Loan</option>
+                <option>Auto Loan</option>
+                <option>Loan Against Property</option>
+                <option>Loan Against Shares</option>
+                <option>Education Loan</option>
+              </select>
+
+              {/* Row 3 */}
+              <div className="grid md:grid-cols-2 gap-5">
+
+                <input
+                  type="number"
+                  name="loanAmount"
+                  placeholder="Loan Amount Required"
+                  required
+                  min="1"
+                  value={formData.loanAmount}
+                  onChange={handleChange}
+                  className="w-full h-14 px-5 rounded-2xl border border-gray-200 bg-[#fafafa] text-gray-700 focus:border-[#272361] focus:ring-4 focus:ring-[#272361]/10 outline-none transition"
+                />
+
+                <input
+                  type="number"
+                  name="monthlyIncome"
+                  placeholder="Monthly Income"
+                  required
+                  min="1"
+                  value={formData.monthlyIncome}
+                  onChange={handleChange}
+                  className="w-full h-14 px-5 rounded-2xl border border-gray-200 bg-[#fafafa] text-gray-700 focus:border-[#272361] focus:ring-4 focus:ring-[#272361]/10 outline-none transition"
+                />
+
+              </div>
+
+              {/* Message */}
+              <textarea
+                rows="4"
+                name="message"
+                placeholder="Write your message..."
+                value={formData.message}
                 onChange={handleChange}
-                className="input text-gray-500"
-              />
-            </div>
+                className="w-full p-5 rounded-2xl border border-gray-200 bg-[#fafafa] text-gray-700 focus:border-[#272361] focus:ring-4 focus:ring-[#272361]/10 outline-none transition resize-none"
+              ></textarea>
 
-            <textarea
-              rows="4"
-              name="message"
-              placeholder="Message (Optional)"
-              value={formData.message}
-              onChange={handleChange}
-              className="input w-full text-gray-500"
-            />
-
-            <div className="text-center pt-4">
+              {/* Button */}
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-primary text-white py-3 px-10 rounded-md font-semibold hover:bg-primary/90 transition disabled:opacity-60"
+                className="w-full h-14 rounded-full bg-[#272361] hover:bg-[#1d1a52] text-white font-semibold text-lg transition duration-300 hover:shadow-2xl cursor-pointer disabled:opacity-70"
               >
                 {loading ? "Submitting..." : "Submit Application"}
               </button>
-            </div>
 
-            {sent && (
-              <p className="text-green-600 text-center pt-4">Application submitted successfully!</p>
-            )}
-            {error && <p className="text-red-600 text-center pt-4">{error}</p>}
-          </form>
+              {/* Success */}
+              {sent && (
+                <p className="text-green-600 text-center font-medium pt-2">
+                  Application submitted successfully!
+                </p>
+              )}
+
+              {/* Error */}
+              {error && (
+                <p className="text-red-600 text-center font-medium pt-2">
+                  {error}
+                </p>
+              )}
+
+            </form>
+
+          </div>
+
         </div>
+
       </div>
+
     </section>
   );
 }
