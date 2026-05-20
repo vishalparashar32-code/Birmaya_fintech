@@ -51,6 +51,7 @@ export default function Footer() {
 
           {/* QUICK LINKS */}
           <div className="lg:col-span-2">
+
             <h4 className="text-2xl font-semibold mb-6 text-center md:text-left">
               Quick Links
             </h4>
@@ -58,23 +59,48 @@ export default function Footer() {
             <ul className="space-y-4 text-gray-300 text-lg text-center md:text-left">
 
               <li>
-                <Link href="/">Home</Link>
+                <Link
+                  href="/"
+                  className="hover:text-[#f89328] transition-all duration-300"
+                >
+                  Home
+                </Link>
               </li>
 
               <li>
-                <Link href="/about">About</Link>
+                <Link
+                  href="/about"
+                  className="hover:text-[#f89328] transition-all duration-300"
+                >
+                  About
+                </Link>
               </li>
 
               <li>
-                <Link href="/services">Services</Link>
+                <Link
+                  href="/services"
+                  className="hover:text-[#f89328] transition-all duration-300"
+                >
+                  Services
+                </Link>
               </li>
 
               <li>
-                <Link href="/blog">Blog</Link>
+                <Link
+                  href="/blog"
+                  className="hover:text-[#f89328] transition-all duration-300"
+                >
+                  Blog
+                </Link>
               </li>
 
               <li>
-                <Link href="/contact">Contact</Link>
+                <Link
+                  href="/contact"
+                  className="hover:text-[#f89328] transition-all duration-300"
+                >
+                  Contact
+                </Link>
               </li>
 
             </ul>
@@ -89,15 +115,50 @@ export default function Footer() {
 
             <ul className="space-y-4 text-gray-300 text-lg text-center md:text-left">
 
-              <li>Personal Loan</li>
+              <li>
+                <Link
+                  href="/services/personal-loan"
+                  className="hover:text-[#f89328] transition-all duration-300"
+                >
+                  Personal Loan
+                </Link>
+              </li>
 
-              <li>Business Loan</li>
+              <li>
+                <Link
+                  href="/services/business-loan"
+                  className="hover:text-[#f89328] transition-all duration-300"
+                >
+                  Business Loan
+                </Link>
+              </li>
 
-              <li>Home Loan</li>
+              <li>
+                <Link
+                  href="/services/home-loan"
+                  className="hover:text-[#f89328] transition-all duration-300"
+                >
+                  Home Loan
+                </Link>
+              </li>
 
-              <li>Car Loan</li>
+              <li>
+                <Link
+                  href="/services/auto-loan"
+                  className="hover:text-[#f89328] transition-all duration-300"
+                >
+                  Auto Loan
+                </Link>
+              </li>
 
-              <li>Loan Against Property</li>
+              <li>
+                <Link
+                  href="/services/loan-against-property"
+                  className="hover:text-[#f89328] transition-all duration-300"
+                >
+                  Loan Against Property
+                </Link>
+              </li>
 
             </ul>
           </div>
@@ -170,7 +231,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="#"
+              href="https://www.linkedin.com/company/117584213/admin/dashboard/"
               className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-[#f89328] hover:text-white transition-all duration-300 text-lg"
             >
               <FaLinkedinIn />

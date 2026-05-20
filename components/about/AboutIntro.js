@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { FaCheckCircle } from "react-icons/fa";
+import Link from "next/link";
 
 export default function AboutIntro() {
   return (
@@ -115,17 +116,19 @@ export default function AboutIntro() {
             {/* Buttons */}
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
 
-              <button className="bg-[#272361] hover:bg-[#1d1a52] cursor-pointer text-white px-7 py-3 rounded-full font-semibold text-sm sm:text-base transition duration-300 shadow-lg hover:shadow-2xl">
-
+              <Link
+                href="/services"
+                className="bg-[#272361] hover:bg-[#1d1a52] text-white px-7 py-3 rounded-full font-semibold text-sm sm:text-base transition duration-300 shadow-lg hover:shadow-2xl text-center"
+              >
                 Explore Services
+              </Link>
 
-              </button>
-
-              <button className="border-2 border-[#f28c28] text-[#f28c28] hover:bg-[#f28c28] hover:text-white cursor-pointer px-7 py-3 rounded-full font-semibold text-sm sm:text-base transition duration-300">
-
+              <Link
+                href="/contact"
+                className="border-2 border-[#f28c28] text-[#f28c28] hover:bg-[#f28c28] hover:text-white px-7 py-3 rounded-full font-semibold text-sm sm:text-base transition duration-300 text-center"
+              >
                 Contact Us
-
-              </button>
+              </Link>
 
             </div>
 

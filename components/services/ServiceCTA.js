@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 export default function ServiceCTA() {
   return (
@@ -18,7 +19,7 @@ export default function ServiceCTA() {
             {/* Left Content */}
             <div className="max-w-2xl text-center lg:text-left">
 
-      {/* Heading */}
+              {/* Heading */}
               <h2 className="mt-6 text-3xl sm:text-4xl md:text-3xl font-bold text-white leading-tight">
                 Need Help Choosing
                 <span className="text-[#f89328]">
@@ -38,9 +39,12 @@ export default function ServiceCTA() {
             {/* Right Buttons */}
             <div className="flex flex-row flex-wrap justify-center lg:justify-end gap-4">
 
-              <button className="bg-[#f89328] hover:bg-white hover:text-black text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-xl cursor-pointer">
+              <Link
+                href="/contact"
+                className="inline-block bg-[#f89328] hover:bg-white hover:text-black text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-xl"
+              >
                 Contact Us
-              </button>
+              </Link>
 
             </div>
 
