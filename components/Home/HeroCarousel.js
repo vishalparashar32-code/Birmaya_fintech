@@ -1,9 +1,13 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import useTypewriter from "./useTypewriter";
 import Link from "next/link";
-const phoneNumber = "919217924215"; // yaha apna number daalna (91 without +)
+import useTypewriter from "./useTypewriter";
+import { FaArrowRight, FaWhatsapp } from "react-icons/fa";
+
+const phoneNumber = "919217924215";
+
 const repaymentMessage =
   "Hi, I want my detailed Loan Repayment Schedule. Please guide me for Rs.99 service.";
 
@@ -12,114 +16,224 @@ const slides = [
     desktop: "/hero/hero1.png",
     mobile: "/hero/mobile/hero1-mobile.png",
     title: "Instant Loan Approval in 24 Hours",
-    desc: "Minimal paperwork. Quick verification. Fast disbursal.",
+    desc: "Minimal paperwork. Quick verification. Fast disbursal with trusted banking partners.",
     btn: "Apply Now",
-    href: "/apply-loan"
+    href: "/apply-loan",
   },
   {
     desktop: "/hero/hero2.png",
     mobile: "/hero/mobile/hero2-mobile.png",
     title: "Check Your Credit Score for Free",
-    desc: "Get your instant CIBIL score report with no cost and no hidden charges.",
+    desc: "Get your instant CIBIL score report with zero hidden charges and fast access.",
     btn: "Check Now",
-    href: "/check-free-credit-score"
+    href: "/check-free-credit-score",
   },
   {
     desktop: "/hero/hero5.png",
     mobile: "/hero/mobile/hero5-mobile.png",
     title: "Get Your Re-Payment Schedule",
-    desc: "Complete EMI breakdown & total interest insights. Only Rs.99 - One Time.",
+    desc: "Complete EMI breakdown & total interest insights. Only Rs.99 one-time service.",
     btn: "Chat on WhatsApp",
-    href: `https://wa.me/${phoneNumber}?text=${encodeURIComponent(repaymentMessage)}`
+    href: `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      repaymentMessage
+    )}`,
   },
 ];
 
-
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
-  const typedTitle = useTypewriter(slides[current].title, 40);
-  const typedDesc = useTypewriter(slides[current].desc, 20);
   const [isMobile, setIsMobile] = useState(false);
 
+  const typedTitle = useTypewriter(slides[current].title, 40);
+  const typedDesc = useTypewriter(slides[current].desc, 18);
+
+  /* MOBILE CHECK */
   useEffect(() => {
-    const checkScreen = () => setIsMobile(window.innerWidth < 768);
+    const checkScreen = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
     checkScreen();
+
     window.addEventListener("resize", checkScreen);
+
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
-
+  /* AUTO SLIDE */
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 6000);
+
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
+    <section className="relative w-full h-[85vh] md:h-screen overflow-hidden font-sans">
 
+      {/* SLIDES */}
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute w-full h-full transition-opacity duration-700 ${index === current ? "opacity-100" : "opacity-0"
-            }`}
+          className={`absolute inset-0 transition-all duration-1000 ${
+            index === current
+              ? "opacity-100 scale-100 z-10"
+              : "opacity-0 scale-105 z-0"
+          }`}
         >
-          <Image src={isMobile ? slide.mobile : slide.desktop} alt="hero" fill className="object-cover" />
 
-          <div className="absolute inset-0 bg-black/60 pointer-events-none"></div>
+          {/* IMAGE */}
+          <Image
+            src={isMobile ? slide.mobile : slide.desktop}
+            alt="hero"
+            fill
+            priority
+            className="object-cover"
+          />
 
-          {/* LEFT SIDE TEXT */}
+          {/* OVERLAY */}
+          <div className="absolute inset-0 bg-black/55"></div>
+
+          {/* CONTENT */}
           {index === current && (
-            <div className="absolute inset-0 flex items-center z-51">
-              <div className="max-w-7xl lg:ml-20 px-6 text-white">
-                <div className="max-w-xl">
+            <div className="absolute inset-0 z-20 flex items-center">
 
-                  <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              <div className="max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-10">
+
+                <div className="max-w-2xl text-white">
+
+                  {/* TOP TAG */}
+                  <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-5">
+
+                    <div className="w-2 h-2 bg-[#f89328] rounded-full animate-pulse"></div>
+
+                    <p className="text-sm font-medium tracking-wide">
+                      Trusted Financial Solutions
+                    </p>
+
+                  </div>
+
+                  {/* TITLE */}
+                  <h1 className="text-[28px] sm:text-[38px] md:text-[10px] lg:text-[40px] font-bold leading-[1.1] mb-5 tracking-tight max-w-[700px]">
+
                     {typedTitle}
-                    <span className="animate-pulse">|</span>
+
+                    <span className="text-[#f89328] animate-pulse">
+                      |
+                    </span>
+
                   </h1>
 
-                  <p className="text-lg md:text-xl mb-8">
+                  {/* DESCRIPTION */}
+                  <p className="text-base md:text-lg text-white/85 leading-7 max-w-xl mb-8 font-normal">
+
                     {typedDesc}
+
                   </p>
-                  {slide.btn && (
-                    slide.href.startsWith("http") ? (
+
+                  {/* BUTTONS */}
+                  <div className="flex flex-col sm:flex-row gap-4">
+
+                    {/* MAIN BUTTON */}
+                    {slide.href.startsWith("http") ? (
                       <a
                         href={slide.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-accent px-8 py-3 rounded-lg font-semibold text-white hover:scale-105 transition"
+                        className="group inline-flex items-center justify-center gap-3 bg-[#f89328] hover:bg-[#e67e12] px-7 py-3.5 rounded-xl text-white font-semibold text-base transition-all duration-300 hover:scale-105"
                       >
                         {slide.btn}
+
+                        {slide.btn.includes("WhatsApp") ? (
+                          <FaWhatsapp className="text-lg" />
+                        ) : (
+                          <FaArrowRight className="group-hover:translate-x-1 transition-all duration-300" />
+                        )}
+
                       </a>
                     ) : (
                       <Link
                         href={slide.href}
-                        className="bg-accent px-8 py-3 rounded-lg font-semibold text-white hover:scale-105 transition"
+                        className="group inline-flex items-center justify-center gap-3 bg-[#f89328] hover:bg-[#e67e12] px-7 py-3.5 rounded-xl text-white font-semibold text-base transition-all duration-300 hover:scale-105"
                       >
                         {slide.btn}
+
+                        <FaArrowRight className="group-hover:translate-x-1 transition-all duration-300" />
+
                       </Link>
-                    )
-                  )}
+                    )}
+
+                    {/* SECOND BUTTON */}
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center justify-center border border-white/30 bg-white/10 backdrop-blur-md hover:bg-white hover:text-black px-7 py-3.5 rounded-xl text-white font-semibold text-base transition-all duration-300"
+                    >
+                      Contact Us
+                    </Link>
+
+                  </div>
+
+                  {/* STATS */}
+                  <div className="flex flex-wrap gap-7 mt-12">
+
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[#f89328]">
+                        5000+
+                      </h3>
+                      <p className="text-white/70 text-sm mt-1">
+                        Happy Customers
+                      </p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[#f89328]">
+                        24Hr
+                      </h3>
+                      <p className="text-white/70 text-sm mt-1">
+                        Fast Approval
+                      </p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[#f89328]">
+                        35+
+                      </h3>
+                      <p className="text-white/70 text-sm mt-1">
+                        Banking Partners
+                      </p>
+                    </div>
+
+                  </div>
+
                 </div>
+
               </div>
+
             </div>
           )}
         </div>
       ))}
 
-      {/* dots */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
+      {/* DOTS */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+
         {slides.map((_, index) => (
-          <div
+
+          <button
             key={index}
             onClick={() => setCurrent(index)}
-            className={`w-3 h-3 rounded-full cursor-pointer ${current === index ? "bg-white" : "bg-white/40"
-              }`}
+            className={`transition-all duration-300 rounded-full ${
+              current === index
+                ? "w-10 h-3 bg-[#f89328]"
+                : "w-3 h-3 bg-white/40 hover:bg-white"
+            }`}
           />
+
         ))}
+
       </div>
-    </div>
+
+    </section>
   );
 }

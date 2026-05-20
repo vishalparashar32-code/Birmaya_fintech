@@ -12,15 +12,15 @@ import RepaymentPopup from "@/components/RepaymentPopup";
 export default function Home() {
   return (
     <>
-    <HeroCarousel/>
-    <LoanProducts />
-    <RepaymentPopup />
-    <EmiCalculator />
-    <Partners />
-    <Stats />
-    <Awards />
-    <Testimonials />
-    <ContactFaq />
+      <HeroCarousel />
+      <LoanProducts />
+      <RepaymentPopup />
+      <EmiCalculator />
+      <Partners />
+      <Awards />
+      <Stats />
+      <Testimonials />
+      <ContactFaq />
     </>
   );
 }

@@ -1,4 +1,13 @@
-import { FaClock, FaShieldAlt, FaBolt, FaHandshake, FaUserTie, FaHeadset } from "react-icons/fa";
+"use client";
+
+import {
+  FaClock,
+  FaShieldAlt,
+  FaBolt,
+  FaHandshake,
+  FaUserTie,
+  FaHeadset,
+} from "react-icons/fa";
 
 const features = [
   {
@@ -35,42 +44,63 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-[#fffaf5] py-14 sm:py-16 md:py-20">
 
-        {/* Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary">
-            Why Choose Birmaya Fintech
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* HEADING */}
+        <div className="text-center mb-14">
+          {/* Main Heading */}
+          <h2 className="mt-5 text-3xl sm:text-4xl md:text-3xl font-bold text-black leading-tight">
+            Why Choose
+            <span className="text-[#f89328]"> Birmaya Fintech</span>
           </h2>
-          <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
-            We make loan processing simple, fast and transparent so you can focus on what matters most.
+
+          {/* Underline */}
+          <div className="w-24 h-1 bg-[#f89328] rounded-full mx-auto mt-5"></div>
+
+          {/* Description */}
+          <p className="text-gray-500 mt-6 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-7 sm:leading-8">
+            We make loan processing simple, fast and transparent
+            so you can focus on what matters most.
           </p>
+
         </div>
 
-        {/* Feature Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {/* FEATURE CARDS */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
           {features.map((item, i) => (
             <div
               key={i}
-              className="bg-[#F7F9FC] p-8 rounded-2xl hover:shadow-xl transition"
+              className="group bg-white p-7 sm:p-8 rounded-3xl border border-[#f89328]/10 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
             >
-              <div className="text-3xl text-accent mb-4">
+
+              {/* Icon */}
+              <div className="w-16 h-16 rounded-2xl bg-[#f89328]/10 text-[#f89328] flex items-center justify-center text-2xl mb-6 group-hover:bg-[#f89328] group-hover:text-white transition-all duration-500">
                 {item.icon}
               </div>
 
-              <h3 className="text-xl font-bold text-primary mb-3">
+              {/* Title */}
+              <h3 className="text-xl sm:text-2xl font-bold text-black mb-4">
                 {item.title}
               </h3>
 
-              <p className="text-gray-600">
+              {/* Line */}
+              <div className="w-14 h-1 bg-[#f89328] rounded-full mb-5"></div>
+
+              {/* Description */}
+              <p className="text-gray-600 text-sm sm:text-base leading-7">
                 {item.desc}
               </p>
+
             </div>
           ))}
+
         </div>
 
       </div>
+
     </section>
   );
 }

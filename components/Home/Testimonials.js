@@ -49,17 +49,22 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="py-24 bg-[#F7F9FC] overflow-hidden">
+    <section className="py-10 bg-[#F7F9FC] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
         <div className="text-center mb-14">
-          <h2 className="text-3xl font-bold text-primary">
-            What Our Customers Say
+          <h2 className="text-4xl md:text-3xl font-bold text-black leading-tight">
+            What Our
+            <span className="text-[#f89328]"> Customers Say</span>
           </h2>
-          <p className="text-gray-500 mt-2">
+
+          <div className="w-28 h-1 bg-[#f89328] mx-auto mt-6 rounded-full"></div>
+
+          <p className="text-gray-500 mt-6 text-lg max-w-2xl mx-auto leading-8">
             Real experiences from our happy customers
           </p>
+
         </div>
 
         {/* Slider */}
