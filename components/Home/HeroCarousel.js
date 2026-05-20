@@ -89,11 +89,27 @@ export default function HeroCarousel() {
             alt="hero"
             fill
             priority
-            className="object-cover object-center"
+            className={`
+              object-cover
+              object-center
+              transition-all duration-700
+              ${isMobile ? "scale-110 blur-[3px]" : "scale-100"}
+            `}
           />
 
-          {/* DARK OVERLAY */}
-          <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-black/85 via-black/55 to-black/20"></div>
+          {/* OVERLAY */}
+          <div
+            className="
+              absolute inset-0
+              bg-black/60
+              md:bg-gradient-to-r
+              md:from-black/85
+              md:via-black/55
+              md:to-black/20
+              backdrop-blur-[2px]
+              md:backdrop-blur-0
+            "
+          ></div>
 
           {/* CONTENT */}
           {index === current && (
@@ -102,16 +118,18 @@ export default function HeroCarousel() {
               <div className="max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-10">
 
                 {/* CONTENT BOX */}
-                <div className="
-                  max-w-2xl
-                  text-white
-                  text-center
-                  md:text-left
-                  mx-auto
-                  md:mx-0
-                  pt-14
-                  md:pt-0
-                ">
+                <div
+                  className="
+                    max-w-2xl
+                    text-white
+                    text-center
+                    md:text-left
+                    mx-auto
+                    md:mx-0
+                    pt-14
+                    md:pt-0
+                  "
+                >
 
                   {/* TOP TAG */}
                   <div className="inline-flex items-center gap-2 bg-[#272361]/70 border border-white/10 px-4 py-2 rounded-full mb-6 shadow-lg backdrop-blur-md">
@@ -125,17 +143,19 @@ export default function HeroCarousel() {
                   </div>
 
                   {/* TITLE */}
-                  <h1 className="
-                    text-[30px]
-                    sm:text-[42px]
-                    md:text-[58px]
-                    lg:text-[65px]
-                    font-extrabold
-                    leading-[1.1]
-                    mb-5
-                    tracking-tight
-                    drop-shadow-2xl
-                  ">
+                  <h1
+                    className="
+                      text-[30px]
+                      sm:text-[42px]
+                      md:text-[58px]
+                      lg:text-[65px]
+                      font-extrabold
+                      leading-[1.1]
+                      mb-5
+                      tracking-tight
+                      drop-shadow-2xl
+                    "
+                  >
 
                     {typedTitle}
 
@@ -146,17 +166,19 @@ export default function HeroCarousel() {
                   </h1>
 
                   {/* DESCRIPTION */}
-                  <p className="
-                    text-sm
-                    sm:text-base
-                    md:text-lg
-                    text-white/85
-                    leading-7
-                    max-w-xl
-                    mb-8
-                    mx-auto
-                    md:mx-0
-                  ">
+                  <p
+                    className="
+                      text-sm
+                      sm:text-base
+                      md:text-lg
+                      text-white/85
+                      leading-7
+                      max-w-xl
+                      mb-8
+                      mx-auto
+                      md:mx-0
+                    "
+                  >
 
                     {typedDesc}
 
@@ -269,4 +291,4 @@ export default function HeroCarousel() {
 
     </section>
   );
-}
+}6
