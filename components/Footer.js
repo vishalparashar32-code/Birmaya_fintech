@@ -231,7 +231,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="https://www.linkedin.com/company/117584213/admin/dashboard/"
+              href="https://www.linkedin.com/company/birmaya-fintech/"
               className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-[#f89328] hover:text-white transition-all duration-300 text-lg"
             >
               <FaLinkedinIn />
