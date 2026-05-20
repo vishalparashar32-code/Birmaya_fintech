@@ -217,14 +217,14 @@ export default function Footer() {
           <div className="flex justify-center md:justify-start items-center gap-3 mt-10 flex-nowrap">
 
             <a
-              href="#"
+              href="https://www.instagram.com/birmaya_fintech_pvt_ltd?igsh=MXFxajk4dzdmdzdmNw=="
               className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-[#f89328] hover:text-white transition-all duration-300 text-lg"
             >
               <FaFacebookF />
             </a>
 
             <a
-              href="#"
+              href="https://www.instagram.com/birmaya_fintech_pvt_ltd?igsh=MXFxajk4dzdmdzdmNw=="
               className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-[#f89328] hover:text-white transition-all duration-300 text-lg"
             >
               <FaInstagram />
@@ -238,7 +238,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="#"
+              href="https://x.com/BIRMAYAFINTECH"
               className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-[#f89328] hover:text-white transition-all duration-300 text-lg"
             >
               <FaTwitter />
