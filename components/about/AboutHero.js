@@ -38,19 +38,7 @@ export default function AboutHero() {
       </div>
 
       {/* Custom Animation */}
-      <style jsx>{`
-        @keyframes zoomIn {
-          0% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.04);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-      `}</style>
+
 
     </section>
   );

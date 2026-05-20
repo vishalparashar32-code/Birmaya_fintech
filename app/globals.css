@@ -58,3 +58,17 @@ body {
 #nprogress .peg {
   box-shadow: 0 0 10px #272361, 0 0 5px #272361;
 }
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

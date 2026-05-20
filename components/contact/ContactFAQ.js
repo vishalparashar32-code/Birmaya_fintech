@@ -37,9 +37,15 @@ export default function ContactFAQ() {
         {/* HEADING */}
         <div className="text-center mb-10">
 
-          <h2 className="text-4xl md:text-3xl font-bold text-black leading-tight">
-            Frequently Asked
-            <span className="text-[#f89328]"> Questions</span>
+          <h2 className="text-4xl md:text-4xl font-bold leading-tight text-center relative inline-block">
+
+            <span className="text-[#272361]">
+              Frequently Asked
+            </span>
+
+            <span className="text-[#f28c28]">
+              {" "}Questions
+            </span>
           </h2>
 
           <div className="w-28 h-1 bg-[#f89328] mx-auto mt-6 rounded-full"></div>
@@ -63,11 +69,10 @@ export default function ContactFAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className={`border rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#f89328] cursor-pointer ${
-                  isOpen
+                className={`border rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#f89328] cursor-pointer ${isOpen
                     ? "border-[#f89328] bg-white"
                     : "border-gray-200 bg-white"
-                }`}
+                  }`}
               >
 
                 {/* QUESTION */}
@@ -78,20 +83,18 @@ export default function ContactFAQ() {
 
                   {/* QUESTION TEXT */}
                   <h4
-                    className={`text-lg md:text-xl font-semibold transition-all duration-300 ${
-                      isOpen ? "text-[#f89328]" : "text-black"
-                    }`}
+                    className={`text-lg md:text-xl font-semibold transition-all duration-300 ${isOpen ? "text-[#f89328]" : "text-black"
+                      }`}
                   >
                     {faq.q}
                   </h4>
 
                   {/* ICON */}
                   <div
-                    className={`min-w-[45px] h-[45px] rounded-full flex items-center justify-center transition-all duration-300 ${
-                      isOpen
+                    className={`min-w-[45px] h-[45px] rounded-full flex items-center justify-center transition-all duration-300 ${isOpen
                         ? "bg-[#f89328] text-white rotate-180"
                         : "bg-gray-100 text-black"
-                    }`}
+                      }`}
                   >
                     {isOpen ? (
                       <FiMinus size={22} />
