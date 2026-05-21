@@ -18,7 +18,7 @@ export default function BlogGrid({ blogs = [] }) {
             Our Blog Collection
           </span>
 
-          <h2 className="mt-6 text-4xl md:text-6xl font-black text-[#272361] leading-tight">
+          <h2 className="mt-6 text-4xl md:text-4xl font-black text-[#272361] leading-tight">
             Insights That Help You
             <span className="block text-[#f89328]">
               Grow Financially
