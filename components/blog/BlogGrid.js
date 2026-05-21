@@ -1,103 +1,121 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export default function BlogGrid({ blogs = [] }) {
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-[#F7F9FC] relative overflow-hidden">
-      
-      {/* Background Blur Effects */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-[#f89328]/10 blur-3xl rounded-full"></div>
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-[#272361]/10 blur-3xl rounded-full"></div>
+    <section className="relative py-24 bg-[#f8fafc] overflow-hidden">
+
+      {/* Background Effects */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-[#f89328]/10 blur-3xl rounded-full"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#272361]/10 blur-3xl rounded-full"></div>
 
       <div className="relative max-w-7xl mx-auto px-6">
 
-        {/* Section Heading */}
-        <div className="text-center mb-16">
-          <span className="bg-[#f89328]/10 text-[#f89328] px-5 py-2 rounded-full text-sm font-semibold uppercase tracking-wide">
-            Latest Articles
+        {/* Heading */}
+        <div className="text-center mb-20">
+          <span className="inline-block px-5 py-2 rounded-full bg-[#272361]/5 text-[#272361] text-sm font-semibold tracking-widest uppercase">
+            Our Blog Collection
           </span>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-[#272361] mt-5">
-            Financial Knowledge Hub
+          <h2 className="mt-6 text-4xl md:text-6xl font-black text-[#272361] leading-tight">
+            Insights That Help You
+            <span className="block text-[#f89328]">
+              Grow Financially
+            </span>
           </h2>
 
-          <p className="text-gray-600 max-w-2xl mx-auto mt-4 text-lg">
-            Explore smart financial tips, loan guides, EMI planning,
-            and expert advice from Birmaya Fintech.
+          <p className="mt-5 text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+            Discover expert financial tips, loan solutions, EMI planning,
+            and smart money management strategies from Birmaya Fintech.
           </p>
         </div>
 
         {/* Empty State */}
         {blogs.length === 0 ? (
-          <div className="bg-white rounded-3xl border border-gray-100 shadow-lg p-14 text-center">
-            <h3 className="text-2xl font-bold text-[#272361] mb-3">
-              No Blogs Available
+          <div className="bg-white border border-gray-100 shadow-xl rounded-[40px] p-16 text-center">
+            <h3 className="text-3xl font-bold text-[#272361] mb-4">
+              Blogs Coming Soon
             </h3>
 
-            <p className="text-gray-500">
-              New financial articles and updates will appear here soon.
+            <p className="text-gray-500 text-lg">
+              We are preparing amazing finance articles for you.
             </p>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-10">
+
             {blogs.map((blog, index) => (
               <Link
                 href={`/blog/${blog.slug}`}
                 key={blog.id || blog.slug}
-                className="group relative bg-white rounded-[30px] overflow-hidden border border-gray-100 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-3"
+                className="group relative"
               >
-                
-                {/* Image */}
-                <div className="relative overflow-hidden">
-                  <Image
-                    src={blog.image}
-                    alt={blog.title}
-                    width={500}
-                    height={300}
-                    className="w-full h-[240px] object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
 
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                {/* Card */}
+                <div className="relative h-full bg-white rounded-[35px] border border-gray-100 overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-4">
 
-                  {/* Number Badge */}
-                  <div className="absolute top-5 left-5 bg-[#f89328] text-white w-12 h-12 rounded-full flex items-center justify-center font-bold shadow-lg">
-                    {String(index + 1).padStart(2, "0")}
+                  {/* Top Gradient Border */}
+                  <div className="h-2 bg-gradient-to-r from-[#272361] via-[#f89328] to-[#272361]"></div>
+
+                  {/* Image */}
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src={blog.image}
+                      alt={blog.title}
+                      width={500}
+                      height={320}
+                      className="w-full h-[260px] object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+
+                    {/* Floating Number */}
+                    <div className="absolute top-5 right-5 bg-white/90 backdrop-blur-lg text-[#272361] w-14 h-14 rounded-2xl flex items-center justify-center text-lg font-black shadow-lg">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-8">
+
+                    {/* Category */}
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-3 h-3 rounded-full bg-[#f89328]"></div>
+
+                      <span className="text-sm uppercase tracking-widest font-bold text-[#f89328]">
+                        Finance Blog
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-2xl font-extrabold text-[#272361] leading-snug mb-4 group-hover:text-[#f89328] transition-colors duration-300">
+                      {blog.title}
+                    </h3>
+
+                    {/* Excerpt */}
+                    <p className="text-gray-600 leading-relaxed mb-8">
+                      {blog.excerpt}
+                    </p>
+
+                    {/* Footer */}
+                    <div className="flex items-center justify-between">
+
+                      <div className="text-[#272361] font-semibold group-hover:text-[#f89328] transition-colors duration-300">
+                        Read Article
+                      </div>
+
+                      <div className="w-12 h-12 rounded-full bg-[#272361] text-white flex items-center justify-center group-hover:bg-[#f89328] transition-all duration-300">
+                        <ArrowUpRight className="w-5 h-5" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Hover Glow */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-60 h-60 bg-[#f89328]/10 blur-3xl rounded-full"></div>
                   </div>
                 </div>
-
-                {/* Content */}
-                <div className="p-7">
-                  
-                  {/* Small Label */}
-                  <span className="text-sm font-semibold text-[#f89328] uppercase tracking-wide">
-                    Finance Guide
-                  </span>
-
-                  {/* Title */}
-                  <h3 className="text-2xl font-bold text-[#272361] mt-3 mb-4 leading-snug group-hover:text-[#f89328] transition-colors duration-300">
-                    {blog.title}
-                  </h3>
-
-                  {/* Excerpt */}
-                  <p className="text-gray-600 leading-relaxed mb-6">
-                    {blog.excerpt}
-                  </p>
-
-                  {/* Read More */}
-                  <div className="flex items-center gap-2 text-[#272361] font-semibold group-hover:text-[#f89328] transition-colors duration-300">
-                    Read Full Article
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </div>
-                </div>
-
-                {/* Bottom Accent Line */}
-                <div className="absolute bottom-0 left-0 h-1 w-0 bg-[#f89328] group-hover:w-full transition-all duration-500"></div>
               </Link>
             ))}
-
           </div>
         )}
       </div>
