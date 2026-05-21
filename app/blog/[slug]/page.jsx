@@ -39,7 +39,7 @@ export default async function BlogDetail({ params }) {
         </div>
 
         {/* Title */}
-        <h1 className="text-4xl md:text-6xl font-black leading-tight text-[#272361] mb-8">
+        <h1 className="text-4xl md:text-4xl font-black leading-tight text-[#272361] mb-8">
           {blog.title}
         </h1>
 
