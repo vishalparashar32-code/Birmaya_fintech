@@ -6,39 +6,39 @@ import { motion } from "framer-motion";
 const awards = [
   {
     image: "/awards/image.png",
-    date: "2020",
+    date: "Moments with Vikash Bajaj Sir",
   },
   {
     image: "/awards/image1.jpg",
-    date: "2021",
+    date: "Honored By Protium Finance",
   },
   {
     image: "/awards/image2.jpg",
-    date: "2021",
+    date: "CAIRO 2026",
   },
   {
     image: "/awards/image3.jpg",
-    date: "2022",
+    date: "IIFL Excellence Award 2024-25",
   },
   {
     image: "/awards/image4.jpg",
-    date: "2022",
+    date: "Channel Partner Award",
   },
   {
     image: "/awards/image5.jpg",
-    date: "2023",
+    date: "Protium Finance Award ",
   },
   {
     image: "/awards/image6.jpg",
-    date: "2023",
+    date: "IIFL Excellence Award 2024-25",
   },
   {
     image: "/awards/image7.jpg",
-    date: "2024",
+    date: "Credit Saioson Award 2025",
   },
   {
     image: "/awards/image8.jpeg",
-    date: "2025",
+    date: " Egpyt Trip  2026",
   },
 ];
 
@@ -113,7 +113,7 @@ export default function Awards() {
                 <div className="mt-5 text-center">
 
                   <p className="text-[#f89328] font-semibold text-lg">
-                    Awarded in {award.date}
+                  {award.date}
                   </p>
 
                 </div>
