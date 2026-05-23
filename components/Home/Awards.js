@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 
 const awards = [
   {
@@ -22,11 +23,11 @@ const awards = [
   },
   {
     image: "/awards/image4.jpg",
-    date: "Channel Partner Award",
+    date: "IDFC Best Channel Partner Award",
   },
   {
     image: "/awards/image5.jpg",
-    date: "Protium Finance Award ",
+    date: "Protium Finance Award",
   },
   {
     image: "/awards/image6.jpg",
@@ -34,15 +35,28 @@ const awards = [
   },
   {
     image: "/awards/image7.jpg",
-    date: "Credit Saioson Award 2025",
+    date: "Credit Saison Airgato 2025",
   },
   {
     image: "/awards/image8.jpeg",
-    date: " Egpyt Trip  2026",
+    date: "Egypt Trip 2026",
   },
 ];
 
 export default function Awards() {
+  const sliderRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (sliderRef.current) {
+      const scrollAmount = 350;
+
+      sliderRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section className="py-10 bg-[#F7F9FC] overflow-hidden">
       <div className="max-w-7xl mx-auto px-2 md:px-6">
@@ -68,61 +82,69 @@ export default function Awards() {
 
         </div>
 
-        {/* SLIDER */}
-        <div className="overflow-hidden relative">
+        {/* BUTTONS */}
+        <div className="flex justify-end gap-4 mb-6">
 
-          <motion.div
-            className="flex gap-5 w-max"
-            animate={{
-              x: ["0%", "-50%"],
-            }}
-            transition={{
-              duration: 35,
-              ease: "linear",
-              repeat: Infinity,
-            }}
+          <button
+            onClick={() => scroll("left")}
+            className="w-12 h-12 rounded-full bg-white shadow-md hover:bg-[#f89328] hover:text-white transition-all duration-300"
           >
+            ←
+          </button>
 
-            {[...awards, ...awards].map((award, i) => (
+          <button
+            onClick={() => scroll("right")}
+            className="w-12 h-12 rounded-full bg-white shadow-md hover:bg-[#f89328] hover:text-white transition-all duration-300"
+          >
+            →
+          </button>
 
-              <motion.div
-                key={i}
-                whileHover={{
-                  scale: 1.03,
-                }}
-                transition={{
-                  duration: 0.3,
-                }}
-                className="group min-w-[260px] sm:min-w-[280px] md:min-w-[320px] bg-white border border-gray-200 hover:border-[#f89328] rounded-3xl p-5 shadow-sm hover:shadow-xl transition-all duration-300"
-              >
+        </div>
 
-                {/* IMAGE */}
-                <div className="relative h-[240px] md:h-[280px] flex items-center justify-center overflow-hidden rounded-2xl bg-[#F7F9FC]">
+        {/* SLIDER */}
+        <div
+          ref={sliderRef}
+          className="flex gap-5 overflow-x-auto scroll-smooth no-scrollbar pb-4"
+        >
 
-                  <Image
-                    src={award.image}
-                    alt="award"
-                    width={280}
-                    height={280}
-                    className="object-contain transition-transform duration-500 group-hover:scale-110"
-                  />
+          {awards.map((award, i) => (
 
-                </div>
+            <motion.div
+              key={i}
+              whileHover={{
+                scale: 1.03,
+              }}
+              transition={{
+                duration: 0.3,
+              }}
+              className="group min-w-[260px] sm:min-w-[280px] md:min-w-[320px] bg-white border border-gray-200 hover:border-[#f89328] rounded-3xl p-5 shadow-sm hover:shadow-xl transition-all duration-300"
+            >
 
-                {/* DATE */}
-                <div className="mt-5 text-center">
+              {/* IMAGE */}
+              <div className="relative h-[240px] md:h-[280px] flex items-center justify-center overflow-hidden rounded-2xl bg-[#F7F9FC]">
 
-                  <p className="text-[#f89328] font-semibold text-lg">
+                <Image
+                  src={award.image}
+                  alt="award"
+                  width={280}
+                  height={280}
+                  className="object-contain transition-transform duration-500 group-hover:scale-110"
+                />
+
+              </div>
+
+              {/* DATE */}
+              <div className="mt-5 text-center">
+
+                <p className="text-[#f89328] font-semibold text-lg">
                   {award.date}
-                  </p>
+                </p>
 
-                </div>
+              </div>
 
-              </motion.div>
+            </motion.div>
 
-            ))}
-
-          </motion.div>
+          ))}
 
         </div>
 
