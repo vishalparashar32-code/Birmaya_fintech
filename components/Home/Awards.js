@@ -34,7 +34,7 @@ const awards = [
   },
   {
     image: "/awards/image7.jpg",
-    date: "Credit Saioson Airgato 2025",
+    date: "Credit Saioson Arigato 2025",
   },
   {
     image: "/awards/image8.jpeg",
