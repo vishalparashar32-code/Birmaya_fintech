@@ -130,10 +130,7 @@ export default function BlogGrid({ blogs = [] }) {
                         className="w-full h-[260px] object-cover group-hover:scale-105 transition-transform duration-700"
                       />
 
-                      {/* Number */}
-                      <div className="absolute top-5 right-5 bg-white/90 backdrop-blur-lg text-[#272361] w-14 h-14 rounded-2xl flex items-center justify-center text-lg font-black shadow-lg">
-                        {String(index + 1).padStart(2, "0")}
-                      </div>
+                   
                     </div>
 
                     {/* Content */}
@@ -141,12 +138,7 @@ export default function BlogGrid({ blogs = [] }) {
 
                       {/* Category */}
                       <div className="flex items-center gap-2 mb-4">
-                        <div className="w-3 h-3 rounded-full bg-[#f89328]"></div>
-
-                        <span className="text-sm uppercase tracking-widest font-bold text-[#f89328]">
-                          Finance Blog
-                        </span>
-                      </div>
+                    
 
                       {/* Title */}
                       <h3 className="text-2xl font-extrabold text-[#272361] leading-snug mb-4 group-hover:text-[#f89328] transition-colors duration-300">
