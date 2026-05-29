@@ -1,4 +1,3 @@
-```jsx
 "use client";
 
 import Image from "next/image";
@@ -9,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 export default function BlogGrid({ blogs = [] }) {
   const ITEMS_PER_LOAD = 6;
 
+  // Initially 6 blogs
   const [visibleBlogs, setVisibleBlogs] = useState(
     blogs.slice(0, ITEMS_PER_LOAD)
   );
@@ -19,32 +19,30 @@ export default function BlogGrid({ blogs = [] }) {
 
   const loaderRef = useRef(null);
 
-  // Load More Blogs
+  // Load More Function
   const loadMoreBlogs = () => {
-    if (!hasMore) return;
-
     const currentLength = visibleBlogs.length;
     const nextBlogs = blogs.slice(
       currentLength,
       currentLength + ITEMS_PER_LOAD
     );
 
-    setVisibleBlogs((prev) => [...prev, ...nextBlogs]);
+    if (nextBlogs.length > 0) {
+      setVisibleBlogs((prev) => [...prev, ...nextBlogs]);
+    }
 
-    if (
-      currentLength + nextBlogs.length >= blogs.length
-    ) {
+    if (currentLength + nextBlogs.length >= blogs.length) {
       setHasMore(false);
     }
   };
 
-  // Infinite Scroll
+  // Intersection Observer
   useEffect(() => {
+    if (!hasMore) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
-        const first = entries[0];
-
-        if (first.isIntersecting) {
+        if (entries[0].isIntersecting) {
           loadMoreBlogs();
         }
       },
@@ -53,18 +51,16 @@ export default function BlogGrid({ blogs = [] }) {
       }
     );
 
-    const currentLoader = loaderRef.current;
-
-    if (currentLoader) {
-      observer.observe(currentLoader);
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
     }
 
     return () => {
-      if (currentLoader) {
-        observer.unobserve(currentLoader);
+      if (loaderRef.current) {
+        observer.unobserve(loaderRef.current);
       }
     };
-  }, [visibleBlogs]);
+  }, [visibleBlogs, hasMore]);
 
   return (
     <section className="relative py-24 bg-[#f8fafc] overflow-hidden">
@@ -81,7 +77,7 @@ export default function BlogGrid({ blogs = [] }) {
             Our Blog Collection
           </span>
 
-          <h2 className="mt-6 text-4xl md:text-5xl font-black text-[#272361] leading-tight">
+          <h2 className="mt-6 text-4xl md:text-4xl font-black text-[#272361] leading-tight">
             Insights That Help You
             <span className="block text-[#f89328]">
               Grow Financially
@@ -89,9 +85,8 @@ export default function BlogGrid({ blogs = [] }) {
           </h2>
 
           <p className="mt-5 text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
-            Discover expert financial tips, loan solutions,
-            EMI planning, and smart money management
-            strategies from Birmaya Fintech.
+            Discover expert financial tips, loan solutions, EMI planning,
+            and smart money management strategies from Birmaya Fintech.
           </p>
         </div>
 
@@ -108,7 +103,6 @@ export default function BlogGrid({ blogs = [] }) {
           </div>
         ) : (
           <>
-            {/* Blog Grid */}
             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-10">
 
               {visibleBlogs.map((blog, index) => (
@@ -131,7 +125,6 @@ export default function BlogGrid({ blogs = [] }) {
                         alt={blog.title}
                         width={500}
                         height={320}
-                        loading="lazy"
                         className="w-full h-[260px] object-cover group-hover:scale-105 transition-transform duration-700"
                       />
 
@@ -147,6 +140,10 @@ export default function BlogGrid({ blogs = [] }) {
                       {/* Category */}
                       <div className="flex items-center gap-2 mb-4">
                         <div className="w-3 h-3 rounded-full bg-[#f89328]"></div>
+
+                        {/* <span className="text-sm uppercase tracking-widest font-bold text-[#f89328]">
+                          Finance Blog
+                        </span> */}
                       </div>
 
                       {/* Title */}
@@ -185,18 +182,9 @@ export default function BlogGrid({ blogs = [] }) {
             {hasMore && (
               <div
                 ref={loaderRef}
-                className="flex justify-center items-center py-16"
+                className="flex justify-center items-center py-10"
               >
-                <div className="w-12 h-12 border-4 border-[#f89328] border-t-transparent rounded-full animate-spin"></div>
-              </div>
-            )}
-
-            {/* End Message */}
-            {!hasMore && (
-              <div className="text-center mt-16">
-                <p className="text-gray-500 text-lg font-medium">
-                  No More Blogs Available
-                </p>
+                <div className="w-10 h-10 border-4 border-[#f89328] border-t-transparent rounded-full animate-spin"></div>
               </div>
             )}
           </>
@@ -205,4 +193,3 @@ export default function BlogGrid({ blogs = [] }) {
     </section>
   );
 }
-```
