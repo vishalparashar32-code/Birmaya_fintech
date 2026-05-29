@@ -130,15 +130,14 @@ export default function BlogGrid({ blogs = [] }) {
                         className="w-full h-[260px] object-cover group-hover:scale-105 transition-transform duration-700"
                       />
 
-                   
                     </div>
 
                     {/* Content */}
                     <div className="p-8">
-
                       {/* Category */}
                       <div className="flex items-center gap-2 mb-4">
-                    
+                  
+                      </div>
 
                       {/* Title */}
                       <h3 className="text-2xl font-extrabold text-[#272361] leading-snug mb-4 group-hover:text-[#f89328] transition-colors duration-300">
