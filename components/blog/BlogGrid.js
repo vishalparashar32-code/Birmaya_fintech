@@ -6,9 +6,9 @@ import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 export default function BlogGrid({ blogs = [] }) {
-  const ITEMS_PER_LOAD = 6;
+  const ITEMS_PER_LOAD = 3;
 
-  // Initially 6 blogs
+  // Initially load 3 blogs
   const [visibleBlogs, setVisibleBlogs] = useState(
     blogs.slice(0, ITEMS_PER_LOAD)
   );
@@ -19,9 +19,10 @@ export default function BlogGrid({ blogs = [] }) {
 
   const loaderRef = useRef(null);
 
-  // Load More Function
+  // Load More Blogs
   const loadMoreBlogs = () => {
     const currentLength = visibleBlogs.length;
+
     const nextBlogs = blogs.slice(
       currentLength,
       currentLength + ITEMS_PER_LOAD
@@ -36,7 +37,7 @@ export default function BlogGrid({ blogs = [] }) {
     }
   };
 
-  // Intersection Observer
+  // Infinite Scroll
   useEffect(() => {
     if (!hasMore) return;
 
@@ -47,7 +48,7 @@ export default function BlogGrid({ blogs = [] }) {
         }
       },
       {
-        threshold: 1,
+        threshold: 0.5,
       }
     );
 
@@ -77,7 +78,7 @@ export default function BlogGrid({ blogs = [] }) {
             Our Blog Collection
           </span>
 
-          <h2 className="mt-6 text-4xl md:text-4xl font-black text-[#272361] leading-tight">
+          <h2 className="mt-6 text-4xl md:text-5xl font-black text-[#272361] leading-tight">
             Insights That Help You
             <span className="block text-[#f89328]">
               Grow Financially
@@ -103,6 +104,7 @@ export default function BlogGrid({ blogs = [] }) {
           </div>
         ) : (
           <>
+            {/* Blog Grid */}
             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-10">
 
               {visibleBlogs.map((blog, index) => (
@@ -128,7 +130,7 @@ export default function BlogGrid({ blogs = [] }) {
                         className="w-full h-[260px] object-cover group-hover:scale-105 transition-transform duration-700"
                       />
 
-                      {/* Floating Number */}
+                      {/* Number */}
                       <div className="absolute top-5 right-5 bg-white/90 backdrop-blur-lg text-[#272361] w-14 h-14 rounded-2xl flex items-center justify-center text-lg font-black shadow-lg">
                         {String(index + 1).padStart(2, "0")}
                       </div>
@@ -141,9 +143,9 @@ export default function BlogGrid({ blogs = [] }) {
                       <div className="flex items-center gap-2 mb-4">
                         <div className="w-3 h-3 rounded-full bg-[#f89328]"></div>
 
-                        {/* <span className="text-sm uppercase tracking-widest font-bold text-[#f89328]">
+                        <span className="text-sm uppercase tracking-widest font-bold text-[#f89328]">
                           Finance Blog
-                        </span> */}
+                        </span>
                       </div>
 
                       {/* Title */}
@@ -182,9 +184,16 @@ export default function BlogGrid({ blogs = [] }) {
             {hasMore && (
               <div
                 ref={loaderRef}
-                className="flex justify-center items-center py-10"
+                className="flex justify-center items-center py-14"
               >
-                <div className="w-10 h-10 border-4 border-[#f89328] border-t-transparent rounded-full animate-spin"></div>
+                <div className="flex flex-col items-center gap-3">
+
+                  <div className="w-10 h-10 border-4 border-[#f89328] border-t-transparent rounded-full animate-spin"></div>
+
+                  <p className="text-[#272361] font-semibold text-lg">
+                    Loading More Blogs...
+                  </p>
+                </div>
               </div>
             )}
           </>
