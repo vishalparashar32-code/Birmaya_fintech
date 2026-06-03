@@ -13,24 +13,24 @@ const repaymentMessage =
 
 const slides = [
   {
-    desktop: "/hero/hero1.png",
-    mobile: "/hero/mobile/hero1-mobile.png",
+    desktop: "/hero/mobile/hero1.jpg",
+    mobile: "/hero/mobile/hero1.jpg",
     title: "Instant Loan Approval in 24 Hours",
     desc: "Minimal paperwork. Quick verification. Fast disbursal with trusted banking partners.",
     btn: "Apply Now",
     href: "/apply-loan",
   },
   {
-    desktop: "/hero/hero2.png",
-    mobile: "/hero/mobile/hero2-mobile.png",
+    desktop: "/hero/mobile/hero2.jpg",
+    mobile: "/hero/mobile/hero2.jpg",
     title: "Check Your Credit Score for Free",
     desc: "Get your instant CIBIL score report with zero hidden charges and fast access.",
     btn: "Check Now",
     href: "/check-free-credit-score",
   },
   {
-    desktop: "/hero/hero5.png",
-    mobile: "/hero/mobile/hero5-mobile.png",
+    desktop: "/hero/mobile/hero4.jpg",
+    mobile: "/hero/mobile/hero4.jpg",
     title: "Get Your Re-Payment Schedule",
     desc: "Complete EMI breakdown & total interest insights. Only Rs.99 one-time service.",
     btn: "Chat on WhatsApp",
@@ -93,21 +93,22 @@ export default function HeroCarousel() {
               object-cover
               object-center
               transition-all duration-700
-              ${isMobile ? "scale-110 blur-[3px]" : "scale-100"}
+              brightness-110
+              contrast-105
+              saturate-110
+              ${isMobile ? "scale-110" : "scale-100"}
             `}
           />
 
-          {/* OVERLAY */}
+          {/* LIGHT OVERLAY */}
           <div
             className="
               absolute inset-0
-              bg-black/60
+              bg-white/5
               md:bg-gradient-to-r
-              md:from-black/85
-              md:via-black/55
-              md:to-black/20
-              backdrop-blur-[2px]
-              md:backdrop-blur-0
+              md:from-black/30
+              md:via-black/10
+              md:to-transparent
             "
           ></div>
 
@@ -132,7 +133,7 @@ export default function HeroCarousel() {
                 >
 
                   {/* TOP TAG */}
-                  <div className="inline-flex items-center gap-2 bg-[#272361]/70 border border-white/10 px-4 py-2 rounded-full mb-6 shadow-lg backdrop-blur-md">
+                  <div className="inline-flex items-center gap-2 bg-[#272361]/60 border border-white/10 px-4 py-2 rounded-full mb-6 shadow-lg backdrop-blur-sm">
 
                     <div className="w-2 h-2 bg-[#f89328] rounded-full animate-pulse"></div>
 
@@ -171,7 +172,7 @@ export default function HeroCarousel() {
                       text-sm
                       sm:text-base
                       md:text-lg
-                      text-white/85
+                      text-white/90
                       leading-7
                       max-w-xl
                       mb-8
@@ -234,7 +235,7 @@ export default function HeroCarousel() {
                         5000+
                       </h3>
 
-                      <p className="text-white/70 text-sm mt-2">
+                      <p className="text-white/80 text-sm mt-2">
                         Happy Customers
                       </p>
                     </div>
@@ -244,7 +245,7 @@ export default function HeroCarousel() {
                         24Hr
                       </h3>
 
-                      <p className="text-white/70 text-sm mt-2">
+                      <p className="text-white/80 text-sm mt-2">
                         Fast Approval
                       </p>
                     </div>
@@ -254,7 +255,7 @@ export default function HeroCarousel() {
                         35+
                       </h3>
 
-                      <p className="text-white/70 text-sm mt-2">
+                      <p className="text-white/80 text-sm mt-2">
                         Banking Partners
                       </p>
                     </div>
@@ -281,7 +282,7 @@ export default function HeroCarousel() {
             className={`transition-all duration-300 rounded-full ${
               current === index
                 ? "w-10 h-3 bg-[#f89328]"
-                : "w-3 h-3 bg-white/40 hover:bg-white"
+                : "w-3 h-3 bg-white/50 hover:bg-white"
             }`}
           />
 
@@ -291,4 +292,4 @@ export default function HeroCarousel() {
 
     </section>
   );
-}6
+}
