@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const awards = [
   {
     image: "/awards/image.png",
-    date: "Moments with Vikash Bajaj Sir",
+    date: "Moments with Vikash Bajaj Sir (Sri Lanka 2025)",
   },
   {
     image: "/awards/image1.jpg",
@@ -26,7 +26,7 @@ const awards = [
   },
   {
     image: "/awards/image5.jpg",
-    date: "Protium Finance Award ",
+    date: "Protium Finance Preferred Business Partner  ",
   },
   {
     image: "/awards/image6.jpg",
