@@ -14,7 +14,7 @@ const repaymentMessage =
 /* SAME IMAGE FOR MOBILE + DESKTOP */
 const slides = [
   {
-    image: "/hero/hero1.jpg",
+    image: "/hero/mobile/hero1.jpg",
     title: "Instant Loan Approval in 24 Hours",
     desc: "Minimal paperwork. Quick verification. Fast disbursal with trusted banking partners.",
     btn: "Apply Now",
