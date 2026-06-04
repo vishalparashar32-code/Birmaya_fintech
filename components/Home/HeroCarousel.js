@@ -11,26 +11,24 @@ const phoneNumber = "919217924215";
 const repaymentMessage =
   "Hi, I want my detailed Loan Repayment Schedule. Please guide me for Rs.99 service.";
 
+/* SAME IMAGE FOR MOBILE + DESKTOP */
 const slides = [
   {
-    desktop: "/hero/mobile/hero1.jpg",
-    mobile: "/hero/mobile/hero1.jpg",
+    image: "/hero/hero1.jpg",
     title: "Instant Loan Approval in 24 Hours",
     desc: "Minimal paperwork. Quick verification. Fast disbursal with trusted banking partners.",
     btn: "Apply Now",
     href: "/apply-loan",
   },
   {
-    desktop: "/hero/mobile/hero2.jpg",
-    mobile: "/hero/mobile/hero2.jpg",
+    image: "/hero/mobile/hero2.jpg",
     title: "Check Your Credit Score for Free",
     desc: "Get your instant CIBIL score report with zero hidden charges and fast access.",
     btn: "Check Now",
     href: "/check-free-credit-score",
   },
   {
-    desktop: "/hero/mobile/hero4.jpg",
-    mobile: "/hero/mobile/hero4.jpg",
+    image: "/hero/mobile/hero4.jpg",
     title: "Get Your Re-Payment Schedule",
     desc: "Complete EMI breakdown & total interest insights. Only Rs.99 one-time service.",
     btn: "Chat on WhatsApp",
@@ -42,23 +40,9 @@ const slides = [
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
   const typedTitle = useTypewriter(slides[current].title, 40);
   const typedDesc = useTypewriter(slides[current].desc, 18);
-
-  /* MOBILE CHECK */
-  useEffect(() => {
-    const checkScreen = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkScreen();
-
-    window.addEventListener("resize", checkScreen);
-
-    return () => window.removeEventListener("resize", checkScreen);
-  }, []);
 
   /* AUTO SLIDE */
   useEffect(() => {
@@ -70,7 +54,7 @@ export default function HeroCarousel() {
   }, []);
 
   return (
-    <section className="relative w-full h-[85vh] md:h-screen overflow-hidden font-sans">
+    <section className="relative w-full h-[100svh] md:h-screen overflow-hidden">
 
       {/* SLIDES */}
       {slides.map((slide, index) => (
@@ -78,47 +62,33 @@ export default function HeroCarousel() {
           key={index}
           className={`absolute inset-0 transition-all duration-1000 ${
             index === current
-              ? "opacity-100 scale-100 z-10"
-              : "opacity-0 scale-105 z-0"
+              ? "opacity-100 z-10"
+              : "opacity-0 z-0"
           }`}
         >
 
           {/* IMAGE */}
           <Image
-            src={isMobile ? slide.mobile : slide.desktop}
-            alt="hero"
+            src={slide.image}
+            alt="Hero Banner"
             fill
             priority
-            className={`
+            sizes="100vw"
+            className="
               object-cover
               object-center
-              transition-all duration-700
-              brightness-110
-              contrast-105
-              saturate-110
-              ${isMobile ? "scale-110" : "scale-100"}
-            `}
+            "
           />
 
-          {/* LIGHT OVERLAY */}
-          <div
-            className="
-              absolute inset-0
-              bg-white/5
-              md:bg-gradient-to-r
-              md:from-black/30
-              md:via-black/10
-              md:to-transparent
-            "
-          ></div>
+          {/* OVERLAY */}
+          <div className="absolute inset-0 bg-black/50 md:bg-black/40" />
 
           {/* CONTENT */}
           {index === current && (
-            <div className="absolute inset-0 z-20 flex items-center justify-center md:justify-start">
+            <div className="absolute inset-0 z-20 flex items-center">
 
-              <div className="max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-10">
+              <div className="w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
 
-                {/* CONTENT BOX */}
                 <div
                   className="
                     max-w-2xl
@@ -127,17 +97,17 @@ export default function HeroCarousel() {
                     md:text-left
                     mx-auto
                     md:mx-0
-                    pt-14
+                    pt-10
                     md:pt-0
                   "
                 >
 
                   {/* TOP TAG */}
-                  <div className="inline-flex items-center gap-2 bg-[#272361]/60 border border-white/10 px-4 py-2 rounded-full mb-6 shadow-lg backdrop-blur-sm">
+                  <div className="inline-flex items-center gap-2 bg-[#272361]/70 border border-white/10 px-4 py-2 rounded-full mb-5 backdrop-blur-md">
 
                     <div className="w-2 h-2 bg-[#f89328] rounded-full animate-pulse"></div>
 
-                    <p className="text-xs sm:text-sm font-medium tracking-wide">
+                    <p className="text-[11px] sm:text-sm font-medium">
                       Trusted Financial Solutions
                     </p>
 
@@ -146,15 +116,14 @@ export default function HeroCarousel() {
                   {/* TITLE */}
                   <h1
                     className="
-                      text-[30px]
-                      sm:text-[42px]
-                      md:text-[58px]
-                      lg:text-[65px]
+                      text-[32px]
+                      sm:text-[48px]
+                      md:text-[60px]
+                      lg:text-[70px]
                       font-extrabold
                       leading-[1.1]
                       mb-5
                       tracking-tight
-                      drop-shadow-2xl
                     "
                   >
 
@@ -169,9 +138,9 @@ export default function HeroCarousel() {
                   {/* DESCRIPTION */}
                   <p
                     className="
-                      text-sm
-                      sm:text-base
-                      md:text-lg
+                      text-[15px]
+                      sm:text-lg
+                      md:text-xl
                       text-white/90
                       leading-7
                       max-w-xl
@@ -194,7 +163,27 @@ export default function HeroCarousel() {
                         href={slide.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center justify-center gap-3 bg-[#f89328] hover:bg-[#ff9d2f] px-8 py-4 rounded-2xl text-white font-semibold text-base transition-all duration-300 hover:scale-105 shadow-[0_10px_30px_rgba(248,147,40,0.35)]"
+                        className="
+                          group
+                          inline-flex
+                          items-center
+                          justify-center
+                          gap-3
+                          bg-[#f89328]
+                          hover:bg-[#ff9d2f]
+                          px-7
+                          py-4
+                          rounded-2xl
+                          text-white
+                          font-semibold
+                          text-base
+                          transition-all
+                          duration-300
+                          hover:scale-105
+                          shadow-xl
+                          w-full
+                          sm:w-auto
+                        "
                       >
                         {slide.btn}
 
@@ -208,7 +197,27 @@ export default function HeroCarousel() {
                     ) : (
                       <Link
                         href={slide.href}
-                        className="group inline-flex items-center justify-center gap-3 bg-[#f89328] hover:bg-[#ff9d2f] px-8 py-4 rounded-2xl text-white font-semibold text-base transition-all duration-300 hover:scale-105 shadow-[0_10px_30px_rgba(248,147,40,0.35)]"
+                        className="
+                          group
+                          inline-flex
+                          items-center
+                          justify-center
+                          gap-3
+                          bg-[#f89328]
+                          hover:bg-[#ff9d2f]
+                          px-7
+                          py-4
+                          rounded-2xl
+                          text-white
+                          font-semibold
+                          text-base
+                          transition-all
+                          duration-300
+                          hover:scale-105
+                          shadow-xl
+                          w-full
+                          sm:w-auto
+                        "
                       >
                         {slide.btn}
 
@@ -220,7 +229,27 @@ export default function HeroCarousel() {
                     {/* CONTACT BUTTON */}
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white hover:text-[#272361] px-8 py-4 rounded-2xl text-white font-semibold text-base transition-all duration-300"
+                      className="
+                        inline-flex
+                        items-center
+                        justify-center
+                        border
+                        border-white/20
+                        bg-white/10
+                        backdrop-blur-md
+                        hover:bg-white
+                        hover:text-[#272361]
+                        px-7
+                        py-4
+                        rounded-2xl
+                        text-white
+                        font-semibold
+                        text-base
+                        transition-all
+                        duration-300
+                        w-full
+                        sm:w-auto
+                      "
                     >
                       Contact Us
                     </Link>
@@ -228,7 +257,7 @@ export default function HeroCarousel() {
                   </div>
 
                   {/* STATS */}
-                  <div className="flex flex-wrap justify-center md:justify-start gap-8 mt-12">
+                  <div className="flex flex-wrap justify-center md:justify-start gap-7 mt-10">
 
                     <div>
                       <h3 className="text-3xl md:text-4xl font-extrabold text-[#f89328]">
@@ -272,7 +301,7 @@ export default function HeroCarousel() {
       ))}
 
       {/* DOTS */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+      <div className="absolute bottom-7 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
 
         {slides.map((_, index) => (
 
