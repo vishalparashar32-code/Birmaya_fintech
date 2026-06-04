@@ -12,26 +12,24 @@ const phoneNumber = "919217924215";
 const repaymentMessage =
   "Hi, I want my detailed Loan Repayment Schedule. Please guide me for Rs.99 service.";
 
+/* SAME IMAGE FOR MOBILE + DESKTOP */
 const slides = [
   {
-    desktop: "/hero/mobile/hero1.jpg",
-    mobile: "/hero/mobile/hero1.jpg",
+    image: "/hero/mobile/hero1.jpg",
     title: "Instant Loan Approval in 24 Hours",
     desc: "Minimal paperwork. Quick verification. Fast disbursal with trusted banking partners.",
     btn: "Apply Now",
     href: "/apply-loan",
   },
   {
-    desktop: "/hero/mobile/hero2.jpg",
-    mobile: "/hero/mobile/hero2.jpg",
+    image: "/hero/mobile/hero2.jpg",
     title: "Check Your Credit Score for Free",
     desc: "Get your instant CIBIL score report with zero hidden charges and fast access.",
     btn: "Check Now",
     href: "/check-free-credit-score",
   },
   {
-    desktop: "/hero/mobile/hero4.jpg",
-    mobile: "/hero/mobile/hero4.jpg",
+    image: "/hero/mobile/hero4.jpg",
     title: "Get Your Re-Payment Schedule",
     desc: "Complete EMI breakdown & total interest insights. Only Rs.99 one-time service.",
     btn: "Chat on WhatsApp",
@@ -43,17 +41,18 @@ const slides = [
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
   const typedTitle = useTypewriter(slides[current].title, 40);
   const typedDesc = useTypewriter(slides[current].desc, 18);
 
+  /* MOBILE CHECK */
   useEffect(() => {
     const checkScreen = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
     checkScreen();
+
     window.addEventListener("resize", checkScreen);
 
     return () => window.removeEventListener("resize", checkScreen);
@@ -68,48 +67,51 @@ export default function HeroCarousel() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-[650px] h-[85vh] md:h-screen overflow-hidden">
+    <section className="relative w-full h-[85vh] md:h-screen overflow-hidden font-sans">
 
       {slides.map((slide, index) => (
         <div
           key={index}
           className={`absolute inset-0 transition-all duration-1000 ${
             index === current
-              ? "opacity-100 scale-100 z-10"
-              : "opacity-0 scale-105 z-0"
+              ? "opacity-100 z-10"
+              : "opacity-0 z-0"
           }`}
         >
           <Image
             src={isMobile ? slide.mobile : slide.desktop}
-            alt={slide.title}
+            alt="hero"
             fill
-            priority={index === 0}
-            sizes="100vw"
-            className="
+            priority
+            className={`
               object-cover
               object-center
-              transition-all
-              duration-700
+              transition-all duration-700
               brightness-110
               contrast-105
               saturate-110
-            "
+              ${isMobile ? "scale-110" : "scale-100"}
+            `}
           />
 
+          {/* LIGHT OVERLAY */}
           <div
             className="
               absolute inset-0
-              bg-black/30
+              bg-white/5
               md:bg-gradient-to-r
-              md:from-black/60
-              md:via-black/35
+              md:from-black/30
+              md:via-black/10
               md:to-transparent
             "
-          />
+          ></div>
 
           {index === current && (
             <div className="absolute inset-0 z-20 flex items-center justify-center md:justify-start">
+
               <div className="max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-10">
+
+                {/* CONTENT BOX */}
                 <div
                   className="
                     max-w-2xl
@@ -122,25 +124,27 @@ export default function HeroCarousel() {
                     md:pt-0
                   "
                 >
-                  <div className="inline-flex items-center gap-2 bg-[#272361]/70 border border-white/10 px-4 py-2 rounded-full mb-6 shadow-lg backdrop-blur-sm">
+
+                  {/* TOP TAG */}
+                  <div className="inline-flex items-center gap-2 bg-[#272361]/60 border border-white/10 px-4 py-2 rounded-full mb-6 shadow-lg backdrop-blur-sm">
+
                     <div className="w-2 h-2 bg-[#f89328] rounded-full animate-pulse"></div>
 
-                    <p className="text-xs sm:text-sm font-medium tracking-wide">
+                    <p className="text-[11px] sm:text-sm font-medium">
                       Trusted Financial Solutions
                     </p>
                   </div>
 
                   <h1
                     className="
-                      text-[28px]
-                      sm:text-[40px]
+                      text-[30px]
+                      sm:text-[42px]
                       md:text-[58px]
                       lg:text-[65px]
                       font-extrabold
                       leading-[1.1]
                       mb-5
                       tracking-tight
-                      drop-shadow-2xl
                     "
                   >
                     {typedTitle}
@@ -150,7 +154,7 @@ export default function HeroCarousel() {
 
                   <p
                     className="
-                      text-[14px]
+                      text-sm
                       sm:text-base
                       md:text-lg
                       text-white/90
@@ -171,26 +175,7 @@ export default function HeroCarousel() {
                         href={slide.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="
-                          group
-                          w-full
-                          sm:w-auto
-                          inline-flex
-                          items-center
-                          justify-center
-                          gap-3
-                          bg-[#f89328]
-                          hover:bg-[#ff9d2f]
-                          px-8
-                          py-4
-                          rounded-2xl
-                          text-white
-                          font-semibold
-                          transition-all
-                          duration-300
-                          hover:scale-105
-                          shadow-[0_10px_30px_rgba(248,147,40,0.35)]
-                        "
+                        className="group inline-flex items-center justify-center gap-3 bg-[#f89328] hover:bg-[#ff9d2f] px-8 py-4 rounded-2xl text-white font-semibold text-base transition-all duration-300 hover:scale-105 shadow-[0_10px_30px_rgba(248,147,40,0.35)]"
                       >
                         {slide.btn}
 
@@ -203,26 +188,7 @@ export default function HeroCarousel() {
                     ) : (
                       <Link
                         href={slide.href}
-                        className="
-                          group
-                          w-full
-                          sm:w-auto
-                          inline-flex
-                          items-center
-                          justify-center
-                          gap-3
-                          bg-[#f89328]
-                          hover:bg-[#ff9d2f]
-                          px-8
-                          py-4
-                          rounded-2xl
-                          text-white
-                          font-semibold
-                          transition-all
-                          duration-300
-                          hover:scale-105
-                          shadow-[0_10px_30px_rgba(248,147,40,0.35)]
-                        "
+                        className="group inline-flex items-center justify-center gap-3 bg-[#f89328] hover:bg-[#ff9d2f] px-8 py-4 rounded-2xl text-white font-semibold text-base transition-all duration-300 hover:scale-105 shadow-[0_10px_30px_rgba(248,147,40,0.35)]"
                       >
                         {slide.btn}
 
@@ -232,32 +198,15 @@ export default function HeroCarousel() {
 
                     <Link
                       href="/contact"
-                      className="
-                        w-full
-                        sm:w-auto
-                        inline-flex
-                        items-center
-                        justify-center
-                        border
-                        border-white/20
-                        bg-white/10
-                        backdrop-blur-md
-                        hover:bg-white
-                        hover:text-[#272361]
-                        px-8
-                        py-4
-                        rounded-2xl
-                        text-white
-                        font-semibold
-                        transition-all
-                        duration-300
-                      "
+                      className="inline-flex items-center justify-center border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white hover:text-[#272361] px-8 py-4 rounded-2xl text-white font-semibold text-base transition-all duration-300"
                     >
                       Contact Us
                     </Link>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-4 md:flex md:flex-wrap md:gap-8 mt-10 md:mt-12">
+                  {/* STATS */}
+                  <div className="flex flex-wrap justify-center md:justify-start gap-8 mt-12">
+
                     <div>
                       <h3 className="text-2xl md:text-4xl font-extrabold text-[#f89328]">
                         5000+
@@ -295,7 +244,9 @@ export default function HeroCarousel() {
         </div>
       ))}
 
-      <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+      {/* DOTS */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+
         {slides.map((_, index) => (
           <button
             key={index}

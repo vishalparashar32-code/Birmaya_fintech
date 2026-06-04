@@ -40,6 +40,10 @@ const awards = [
     image: "/awards/image8.jpeg",
     date: " Egpyt Trip  2026",
   },
+    {
+    image: "/awards/image9.jpeg",
+    date: " Excellence Award in 2026 – Aditya Birla",
+  },
 ];
 
 export default function Awards() {
