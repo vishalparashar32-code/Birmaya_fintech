@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -47,20 +48,17 @@ export default function HeroCarousel() {
   const typedTitle = useTypewriter(slides[current].title, 40);
   const typedDesc = useTypewriter(slides[current].desc, 18);
 
-  /* MOBILE CHECK */
   useEffect(() => {
     const checkScreen = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
     checkScreen();
-
     window.addEventListener("resize", checkScreen);
 
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
-  /* AUTO SLIDE */
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
@@ -70,9 +68,8 @@ export default function HeroCarousel() {
   }, []);
 
   return (
-    <section className="relative w-full h-[85vh] md:h-screen overflow-hidden font-sans">
+    <section className="relative w-full min-h-[650px] h-[85vh] md:h-screen overflow-hidden">
 
-      {/* SLIDES */}
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -82,43 +79,37 @@ export default function HeroCarousel() {
               : "opacity-0 scale-105 z-0"
           }`}
         >
-
-          {/* IMAGE */}
           <Image
             src={isMobile ? slide.mobile : slide.desktop}
-            alt="hero"
+            alt={slide.title}
             fill
-            priority
-            className={`
+            priority={index === 0}
+            sizes="100vw"
+            className="
               object-cover
               object-center
-              transition-all duration-700
+              transition-all
+              duration-700
               brightness-110
               contrast-105
               saturate-110
-              ${isMobile ? "scale-110" : "scale-100"}
-            `}
+            "
           />
 
-          {/* LIGHT OVERLAY */}
           <div
             className="
               absolute inset-0
-              bg-white/5
+              bg-black/30
               md:bg-gradient-to-r
-              md:from-black/30
-              md:via-black/10
+              md:from-black/60
+              md:via-black/35
               md:to-transparent
             "
-          ></div>
+          />
 
-          {/* CONTENT */}
           {index === current && (
             <div className="absolute inset-0 z-20 flex items-center justify-center md:justify-start">
-
               <div className="max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-10">
-
-                {/* CONTENT BOX */}
                 <div
                   className="
                     max-w-2xl
@@ -127,27 +118,22 @@ export default function HeroCarousel() {
                     md:text-left
                     mx-auto
                     md:mx-0
-                    pt-14
+                    pt-10
                     md:pt-0
                   "
                 >
-
-                  {/* TOP TAG */}
-                  <div className="inline-flex items-center gap-2 bg-[#272361]/60 border border-white/10 px-4 py-2 rounded-full mb-6 shadow-lg backdrop-blur-sm">
-
+                  <div className="inline-flex items-center gap-2 bg-[#272361]/70 border border-white/10 px-4 py-2 rounded-full mb-6 shadow-lg backdrop-blur-sm">
                     <div className="w-2 h-2 bg-[#f89328] rounded-full animate-pulse"></div>
 
                     <p className="text-xs sm:text-sm font-medium tracking-wide">
                       Trusted Financial Solutions
                     </p>
-
                   </div>
 
-                  {/* TITLE */}
                   <h1
                     className="
-                      text-[30px]
-                      sm:text-[42px]
+                      text-[28px]
+                      sm:text-[40px]
                       md:text-[58px]
                       lg:text-[65px]
                       font-extrabold
@@ -157,44 +143,54 @@ export default function HeroCarousel() {
                       drop-shadow-2xl
                     "
                   >
-
                     {typedTitle}
 
-                    <span className="text-[#f89328] animate-pulse">
-                      |
-                    </span>
-
+                    <span className="text-[#f89328] animate-pulse">|</span>
                   </h1>
 
-                  {/* DESCRIPTION */}
                   <p
                     className="
-                      text-sm
+                      text-[14px]
                       sm:text-base
                       md:text-lg
                       text-white/90
-                      leading-7
+                      leading-6
+                      md:leading-7
                       max-w-xl
                       mb-8
                       mx-auto
                       md:mx-0
                     "
                   >
-
                     {typedDesc}
-
                   </p>
 
-                  {/* BUTTONS */}
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-
-                    {/* MAIN BUTTON */}
+                  <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center md:justify-start">
                     {slide.href.startsWith("http") ? (
                       <a
                         href={slide.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center justify-center gap-3 bg-[#f89328] hover:bg-[#ff9d2f] px-8 py-4 rounded-2xl text-white font-semibold text-base transition-all duration-300 hover:scale-105 shadow-[0_10px_30px_rgba(248,147,40,0.35)]"
+                        className="
+                          group
+                          w-full
+                          sm:w-auto
+                          inline-flex
+                          items-center
+                          justify-center
+                          gap-3
+                          bg-[#f89328]
+                          hover:bg-[#ff9d2f]
+                          px-8
+                          py-4
+                          rounded-2xl
+                          text-white
+                          font-semibold
+                          transition-all
+                          duration-300
+                          hover:scale-105
+                          shadow-[0_10px_30px_rgba(248,147,40,0.35)]
+                        "
                       >
                         {slide.btn}
 
@@ -203,79 +199,104 @@ export default function HeroCarousel() {
                         ) : (
                           <FaArrowRight className="group-hover:translate-x-1 transition-all duration-300" />
                         )}
-
                       </a>
                     ) : (
                       <Link
                         href={slide.href}
-                        className="group inline-flex items-center justify-center gap-3 bg-[#f89328] hover:bg-[#ff9d2f] px-8 py-4 rounded-2xl text-white font-semibold text-base transition-all duration-300 hover:scale-105 shadow-[0_10px_30px_rgba(248,147,40,0.35)]"
+                        className="
+                          group
+                          w-full
+                          sm:w-auto
+                          inline-flex
+                          items-center
+                          justify-center
+                          gap-3
+                          bg-[#f89328]
+                          hover:bg-[#ff9d2f]
+                          px-8
+                          py-4
+                          rounded-2xl
+                          text-white
+                          font-semibold
+                          transition-all
+                          duration-300
+                          hover:scale-105
+                          shadow-[0_10px_30px_rgba(248,147,40,0.35)]
+                        "
                       >
                         {slide.btn}
 
                         <FaArrowRight className="group-hover:translate-x-1 transition-all duration-300" />
-
                       </Link>
                     )}
 
-                    {/* CONTACT BUTTON */}
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white hover:text-[#272361] px-8 py-4 rounded-2xl text-white font-semibold text-base transition-all duration-300"
+                      className="
+                        w-full
+                        sm:w-auto
+                        inline-flex
+                        items-center
+                        justify-center
+                        border
+                        border-white/20
+                        bg-white/10
+                        backdrop-blur-md
+                        hover:bg-white
+                        hover:text-[#272361]
+                        px-8
+                        py-4
+                        rounded-2xl
+                        text-white
+                        font-semibold
+                        transition-all
+                        duration-300
+                      "
                     >
                       Contact Us
                     </Link>
-
                   </div>
 
-                  {/* STATS */}
-                  <div className="flex flex-wrap justify-center md:justify-start gap-8 mt-12">
-
+                  <div className="grid grid-cols-3 gap-4 md:flex md:flex-wrap md:gap-8 mt-10 md:mt-12">
                     <div>
-                      <h3 className="text-3xl md:text-4xl font-extrabold text-[#f89328]">
+                      <h3 className="text-2xl md:text-4xl font-extrabold text-[#f89328]">
                         5000+
                       </h3>
 
-                      <p className="text-white/80 text-sm mt-2">
+                      <p className="text-white/80 text-xs md:text-sm mt-2">
                         Happy Customers
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-3xl md:text-4xl font-extrabold text-[#f89328]">
+                      <h3 className="text-2xl md:text-4xl font-extrabold text-[#f89328]">
                         24Hr
                       </h3>
 
-                      <p className="text-white/80 text-sm mt-2">
+                      <p className="text-white/80 text-xs md:text-sm mt-2">
                         Fast Approval
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-3xl md:text-4xl font-extrabold text-[#f89328]">
+                      <h3 className="text-2xl md:text-4xl font-extrabold text-[#f89328]">
                         35+
                       </h3>
 
-                      <p className="text-white/80 text-sm mt-2">
+                      <p className="text-white/80 text-xs md:text-sm mt-2">
                         Banking Partners
                       </p>
                     </div>
-
                   </div>
-
                 </div>
-
               </div>
-
             </div>
           )}
         </div>
       ))}
 
-      {/* DOTS */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
-
+      <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
         {slides.map((_, index) => (
-
           <button
             key={index}
             onClick={() => setCurrent(index)}
@@ -285,11 +306,9 @@ export default function HeroCarousel() {
                 : "w-3 h-3 bg-white/50 hover:bg-white"
             }`}
           />
-
         ))}
-
       </div>
-
     </section>
   );
 }
+
