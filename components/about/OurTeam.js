@@ -64,9 +64,9 @@ const teamMembers = [
     },
     {
         id: 9,
-        name: "Mohit",
+        name: "Mohit Gautam",
         image: "/about/Mohit.jpeg",
-         phone: "+91 98447137260",
+         phone: "+91 8447137260",
          designation: "Sales Manager",
     },
     {
@@ -80,7 +80,7 @@ const teamMembers = [
         id: 11,
         name: "Jatin Vakshi",
         designation: "Marketing Executive",
-        phone: "+91 9355565353",
+        phone: "+91 9217934215",
         image: "/about/Jatin Vakshi.jpeg",
     },
 
