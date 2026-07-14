@@ -4,6 +4,7 @@ import AboutIntro from "@/components/about/AboutIntro";
 import MissionVision from "@/components/about/MissionVision";
 import WhyChooseUs from "@/components/about/WhyChooseUs";
 import ServiceCTA from "@/components/services//ServiceCTA";
+import ourStory from "@/components/about/OurStory";
 
 export default function AboutPage() {
   return (
@@ -12,6 +13,7 @@ export default function AboutPage() {
       <AboutIntro />
       <MissionVision />
       <WhyChooseUs />
+      <ourStory />
       <ServiceCTA />
     </>
   );

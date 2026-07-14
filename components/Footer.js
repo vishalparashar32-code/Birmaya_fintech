@@ -78,10 +78,10 @@ export default function Footer() {
 
               <li>
                 <Link
-                  href="/services"
+                  href="/whoWeAre"
                   className="hover:text-[#f89328] transition-all duration-300"
                 >
-                  Services
+                  Who We Are
                 </Link>
               </li>
 
