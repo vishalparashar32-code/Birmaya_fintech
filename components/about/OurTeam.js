@@ -78,14 +78,15 @@ const teamMembers = [
     },
     {
         id: 11,
-        name: "Jatin Vakshi",
+        name: "Jatin Bakshi",
         designation: "Marketing Executive",
         phone: "+91 9217934215",
-        image: "/about/Jatin Vakshi.jpeg",
+        image: "/about/Jatin Bakshi.jpeg",
     },
 
 
 
+    
     {
         id: 12,
         name: "Komal Tiwari",
