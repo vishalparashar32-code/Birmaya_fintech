@@ -33,6 +33,13 @@ const teamMembers = [
         phone: "+91 9311979471",
         image: "/about/Prashant.jpeg",
     },
+     {
+        id: 5,
+        name: "Dev Bhan ",
+        designation: "Backend Executive (Mortgage)",
+        phone: "+91 9266877229",
+        image: "/about/Devbhan.jpg",
+    },
     // {
     //     id: 5,
     //     name: "Prasun Rai",
