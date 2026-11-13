@@ -8,6 +8,7 @@ const awards = [
     image: "/awards/image.png",
     date: "Moments with Vikash Bajaj Sir (Sri Lanka 2025)",
   },
+
   {
     image: "/awards/image1.jpg",
     date: "Honored By Protium Finance",
@@ -40,9 +41,13 @@ const awards = [
     image: "/awards/image8.jpeg",
     date: " Egpyt Trip  2026",
   },
-    {
+  {
     image: "/awards/image9.jpeg",
     date: " Excellence Award in 2026 – Aditya Birla",
+  },
+  {
+    image: "/photo.jpg",
+    date: "5000 Cr UBL AUM MILESTONE",
   },
 ];
 
@@ -117,7 +122,7 @@ export default function Awards() {
                 <div className="mt-5 text-center">
 
                   <p className="text-[#f89328] font-semibold text-lg">
-                  {award.date}
+                    {award.date}
                   </p>
 
                 </div>

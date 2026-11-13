@@ -33,13 +33,13 @@ const teamMembers = [
         phone: "+91 9311979471",
         image: "/about/Prashant.jpeg",
     },
-    {
-        id: 5,
-        name: "Prasun Rai",
-        designation: "CRM",
-        phone: "+91 9266877229",
-        image: "/about/Prasun.jpeg",
-    },
+    // {
+    //     id: 5,
+    //     name: "Prasun Rai",
+    //     designation: "CRM",
+    //     phone: "+91 9266877229",
+    //     image: "/about/Prasun.jpeg",
+    // },
     {
         id: 6,
         name: "Sharwan",
@@ -81,7 +81,7 @@ const teamMembers = [
         name: "Jatin Bakshi",
         designation: "Marketing Executive",
         phone: "+91 9217934215",
-        image: "/about/Jatin Bakshi.jpeg",
+        image: "/about/Jatin Vakshi.jpeg",
     },
 
 
