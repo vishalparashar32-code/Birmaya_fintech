@@ -14,7 +14,7 @@ const teamMembers = [
     {
         id: 2,
         name: "Sahil Kumar",
-        designation: "Backend Executive (UBL)",
+        designation: "Backend Manager (UBL)",
         phone: "+91 9355565353",
         image: "/about/Sahil.jpeg",
     },

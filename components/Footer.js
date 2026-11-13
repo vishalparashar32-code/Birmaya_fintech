@@ -193,7 +193,7 @@ export default function Footer() {
               <FaEnvelope className="text-[#f89328] mt-1 text-lg shrink-0" />
 
               <p className="break-all">
-                birmayafintech@gmail.com
+               admin@birmayafintech.com
               </p>
 
             </div>
